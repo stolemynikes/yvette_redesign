@@ -1,70 +1,74 @@
-@import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Montserrat:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Varela+Round&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dr+Sugiyama&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-     /*! background colors */
+  /* Botanical Design Tokens */
+  --botanical-bg: #F9F8F4;
+  --botanical-fg: #2D3A31;
+  --botanical-sage: #8C9A84;
+  --botanical-clay: #DCCFC2;
+  --botanical-stone: #E6E2DA;
+  --botanical-terra: #C27B66;
+  --botanical-card: #F2F0EB;
 
-    --primary: #68a0a5;
-    --primary-accent: #daefef;
-    --secondary: #fbf6ed;
-    --btncolor: #baa1ca;
-    --green: #e7f3de;
- 
-     /*! font sizes */
-     --fontsize-h1-desktop: 48px;
- 
-     --fontsize-h2-desktop: 24px;
- 
-     --fontsize-button-desktop: 20px;
+  /* Legacy tokens (kept for SCSS compat during migration) */
+  --primary: #8C9A84;
+  --primary-accent: #F2F0EB;
+  --secondary: #F9F8F4;
+  --btncolor: #2D3A31;
+  --green: #F2F0EB;
 
-     --fontsize-h3-desktop: 14px;
- 
-     /*! Font Styles */
-     --font-written: 'Annie Use Your Telescope', cursive;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Source Sans 3', system-ui, sans-serif;
 }
 
-@media only screen and (max-width: 1440px) {
-    :root {
-        --fontsize-h1-desktop: 40px;
-        --fontsize-h2-desktop: 20px;
-        --fontsize-button-desktop: 18px;
-        --fontsize-h3-desktop: 12px;
-    
-    }
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media only screen and (max-width: 800px) {
-    :root {
-        --fontsize-h1-desktop: 32px;
-        --fontsize-h2-desktop: 16px;
-        --fontsize-button-desktop: 14px;
-        --fontsize-h3-desktop: 10px;
-    
-    }
-}
-
-@media only screen and (max-width: 500px) {
-    :root {
-        --fontsize-h1-desktop: 28px;
-        --fontsize-h2-desktop: 14px;
-        --fontsize-button-desktop: 12px;
-        --fontsize-h3-desktop: 10px;
-    
-    }
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    line-height: 130%;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    margin: 0% 1% 1% 1%;
-    position: relative;
+  background-color: var(--botanical-bg);
+  color: var(--botanical-fg);
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--botanical-fg);
+  line-height: 1.2;
+}
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ── Page transition ──────────────────────────────────────── */
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-transition {
+  animation: pageFadeIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}

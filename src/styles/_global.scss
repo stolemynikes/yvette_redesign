@@ -1,7 +1,8 @@
-//global styling
+// ============================================================
+// Global Botanical Styles
+// ============================================================
 
-//!Margin
-
+// Spacing utilities (kept for legacy compat)
 .m5-10 {
     margin: 5% 10%;
 }
@@ -10,210 +11,216 @@
     padding: 5% 10%;
 }
 
-//! Button
-
-.button {
-    border: 2px solid var(--btncolor);
-    background: none;
-    width: 100%;
-    padding: .5rem;
-    font-size: var(--fontsize-button-desktop);
-    border-radius: 18px;
-    color: var(--btncolor);
-    transition: .5s ease;
-
-    &:hover {
-        color: #fff;
-        background: var(--btncolor);
-    }
-}
-
-/* CSS */
+// ============================================================
+// Botanical Button — Primary
+// Used sitewide for CTAs
+// ============================================================
 
 .button-nav {
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
+    display: inline-flex;
     align-items: center;
-    background-color: var(--btncolor);
-    border: 1px solid #baa1ca;
-    border-radius: 4px;
-    box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
-    box-sizing: border-box;
+    justify-content: center;
+    background-color: #2D3A31;
     color: #fff;
-    cursor: pointer;
-    outline: none;
-    outline: 0;
-    text-align: center;
-    transform: translateY(0);
-    transition: transform 150ms, box-shadow 150ms;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    padding: 10px 25px;
+    border: none;
+    border-radius: 9999px;
+    padding: 0.75rem 1.75rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     text-decoration: none;
-    font-size: var(--fontsize-button-desktop);
-    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: background-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+    box-shadow: 0 4px 6px -1px rgba(45, 58, 49, 0.12);
+    white-space: nowrap;
 
-  &:hover {
-    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
-    transform: translateY(-2px);
-  }
-}
-
-@media (max-width: 500px) {
-  .button-nav {
-    a {
-        padding: 5px 15px;
+    &:hover {
+        background-color: #C27B66;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px -6px rgba(194, 123, 102, 0.35);
+        color: #fff;
     }
-  }
 
+    &:active {
+        transform: translateY(0);
+    }
 }
 
-//! Fonts
+// ============================================================
+// Botanical Button — Secondary (outline)
+// ============================================================
 
-.font-varela {
-    font-family: 'Varela Round', sans-serif;
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: #8C9A84;
+    border: 1px solid #8C9A84;
+    border-radius: 9999px;
+    padding: 0.75rem 1.75rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 300ms ease;
+    text-decoration: none;
+
+    &:hover {
+        background-color: #8C9A84;
+        color: #fff;
+        transform: translateY(-1px);
+    }
 }
 
-.font-inter {
-    font-family: 'Inter', sans-serif;
-}
+// ============================================================
+// Page Banner — Botanical style
+// Used on all service/info pages
+// ============================================================
 
 .page-banner {
     position: relative;
     width: 100%;
+    overflow: hidden;
 
     img {
         object-fit: cover;
         width: 100%;
-        height: 36.25vw;
+        height: clamp(260px, 36vw, 520px);
         border-radius: 0;
-        box-shadow: none;
+        display: block;
     }
 
     div {
         position: absolute;
-        bottom: 5px;
+        bottom: 0;
         left: 0;
-        width: 100%;
-        margin: 0;
-        text-align: center;
-
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(5px);
-
+        right: 0;
+        padding: 2rem 5%;
+        background: linear-gradient(to top, rgba(45, 58, 49, 0.5) 0%, transparent 100%);
         display: flex;
         justify-content: center;
+        align-items: flex-end;
 
         h1 {
-            font-size: 2.5vw;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(0.95rem, 2vw, 1.6rem);
+            font-weight: 600;
+            font-style: italic;
             color: #fff;
-            padding: 1rem;
-            font-family: 'Varela Round', sans-serif;
+            text-align: center;
+            line-height: 1.35;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            max-width: 760px;
+            background: rgba(45, 58, 49, 0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 9999px;
+            padding: 0.65rem 1.75rem;
         }
     }
 }
 
-//certificaten
-.certificaten-logos {
-    display: grid;
-    font-family: 'Inter', sans-serif;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    div {
-        display: grid;
-        gap: 1rem;
-        align-items: center;
-        text-align: center;
-        justify-items: center;
-        div {
-            display: grid;
-            // grid-template-columns: repeat(auto-fill, 1fr);
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            @media (max-width: 500px) {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-    }
-    img {
-        width: 70px;
-        box-shadow: none;
-    }
-}
+// ============================================================
+// Certificates strip — Botanical style
+// ============================================================
 
-.certificaten-logos-adem {
-    display: grid;
-    font-family: 'Inter', sans-serif;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    div {
-        display: grid;
-        gap: 1rem;
-        align-items: center;
-        text-align: center;
-        justify-items: center;
-        div {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            @media (max-width: 500px) {
-                grid-template-columns: 1fr;
-            }
-        }
-    }
-    img {
-        width: 70px;
-        box-shadow: none;
-    }
-}
+.certificaten-logos,
+.certificaten-logos-adem,
+.certificaten-logos-coaching,
+.certificaten-logos-stressmanagement {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+    font-family: 'Source Sans 3', sans-serif;
 
-.certificaten-logos-coaching {
-    display: grid;
-    font-family: 'Inter', sans-serif;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    div {
-        display: grid;
-        gap: 1rem;
+    > div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
         align-items: center;
-        text-align: center;
-        justify-items: center;
-        div {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            @media (max-width: 500px) {
-                grid-template-columns: 1fr;
-            }
+
+        > div {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
         }
     }
+
     img {
-        width: 70px;
+        width: auto;
+        height: 64px;
+        max-width: 140px;
+        object-fit: contain;
         box-shadow: none;
+        filter: grayscale(30%);
+        opacity: 0.8;
+        transition: all 400ms ease;
+
+        &:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
     }
 }
 
 .certificaten-logos-stressmanagement {
-    display: grid;
-    font-family: 'Inter', sans-serif;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    div {
-        display: grid;
-        gap: 1rem;
-        align-items: center;
-        text-align: center;
-        justify-items: center;
-        div {
-            display: grid;
-            grid-template-columns: 1fr;
-            @media (max-width: 500px) {
-                grid-template-columns: 1fr;
-            }
-        }
-    }
     img {
-        width: 140px;
-        box-shadow: none;
+        height: 100px;
+        max-width: 200px;
     }
+}
+
+// ============================================================
+// Botanical section utils
+// ============================================================
+
+.botanical-section {
+    padding: 6rem 0;
+
+    @media (max-width: 768px) {
+        padding: 4rem 0;
+    }
+}
+
+.botanical-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    @media (max-width: 640px) {
+        padding: 0 1.25rem;
+    }
+}
+
+// Italic serif pull-quote
+.botanical-pullquote {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1.25rem, 2vw, 1.625rem);
+    color: #8C9A84;
+    line-height: 1.5;
+    border-left: 2px solid #DCCFC2;
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+}
+
+// Font utilities
+.font-varela {
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+.font-inter {
+    font-family: 'Source Sans 3', sans-serif;
 }
