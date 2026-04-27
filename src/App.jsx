@@ -21,7 +21,7 @@ import NewsletterPopup from './components/NewsletterPopup'
 //router
 import { Routes, Route, Navigate, useLocation} from 'react-router-dom'
 import Kennismakingsgesprek from './pages/Kennismakingsgesprek'
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 
 //global styling
 import './styles/_global.scss'
