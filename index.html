@@ -11,6 +11,20 @@
     <meta name="author" content="Yvette van Zadel">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yvette van Zadel</title>
+    <script>
+      (function(l) {
+        if (l.search[1] === 'p') {
+          var decoded = l.search.slice(1).split('~q~').map(function(s) {
+            return s.replace(/~and~/g, '&');
+          });
+          window.history.replaceState(null, null,
+            l.pathname + (decoded[0] ? '/' + decoded[0] : '') +
+            (decoded[1] ? '?' + decoded[1] : '') +
+            l.hash
+          );
+        }
+      }(window.location));
+    </script>
   </head>
   <body>
     <div id="root"></div>

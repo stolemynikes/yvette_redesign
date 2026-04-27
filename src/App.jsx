@@ -21,7 +21,7 @@ import NewsletterPopup from './components/NewsletterPopup'
 //router
 import { Routes, Route, Navigate, useLocation} from 'react-router-dom'
 import Kennismakingsgesprek from './pages/Kennismakingsgesprek'
-import { useEffect , useState} from 'react'
+import { useEffect, useRef } from 'react'
 
 //global styling
 import './styles/_global.scss'
@@ -31,8 +31,10 @@ import './styles/_global.scss'
 function App() {
 
     const {pathname} = useLocation();
+    const isFirstRender = useRef(true);
 
     useEffect(() => {
+        if (isFirstRender.current) { isFirstRender.current = false; return; }
         window.scrollTo({top: 0, behavior: 'instant'})
     }, [pathname])
 
