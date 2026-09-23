@@ -20,12 +20,12 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #2D3A31;
+    background-color: #2C6975;
     color: #fff;
     border: none;
     border-radius: 9999px;
     padding: 0.75rem 1.75rem;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Lato', sans-serif;
     font-size: 0.8125rem;
     font-weight: 600;
     letter-spacing: 0.12em;
@@ -33,18 +33,27 @@
     text-decoration: none;
     cursor: pointer;
     transition: background-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
-    box-shadow: 0 4px 6px -1px rgba(45, 58, 49, 0.12);
+    box-shadow: 0 4px 6px -1px rgba(44, 58, 62, 0.12);
     white-space: nowrap;
 
     &:hover {
-        background-color: #C27B66;
+        background-color: #21555F;
         transform: translateY(-2px);
-        box-shadow: 0 10px 20px -6px rgba(194, 123, 102, 0.35);
+        box-shadow: 0 10px 20px -6px rgba(31, 78, 87, 0.4);
         color: #fff;
     }
 
     &:active {
         transform: translateY(0);
+    }
+
+    // Op telefoons mag een lange knoptekst afbreken; met nowrap stak de
+    // knop buiten het scherm (465px breed op een viewport van 375px).
+    @media (max-width: 640px) {
+        white-space: normal;
+        text-align: center;
+        max-width: 100%;
+        line-height: 1.4;
     }
 }
 
@@ -57,11 +66,11 @@
     align-items: center;
     justify-content: center;
     background: transparent;
-    color: #8C9A84;
-    border: 1px solid #8C9A84;
+    color: #2C6975;
+    border: 1px solid #2C6975;
     border-radius: 9999px;
     padding: 0.75rem 1.75rem;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Lato', sans-serif;
     font-size: 0.8125rem;
     font-weight: 600;
     letter-spacing: 0.12em;
@@ -71,7 +80,7 @@
     text-decoration: none;
 
     &:hover {
-        background-color: #8C9A84;
+        background-color: #2C6975;
         color: #fff;
         transform: translateY(-1px);
     }
@@ -101,13 +110,13 @@
         left: 0;
         right: 0;
         padding: 2rem 5%;
-        background: linear-gradient(to top, rgba(45, 58, 49, 0.5) 0%, transparent 100%);
+        background: linear-gradient(to top, rgba(44, 58, 62, 0.5) 0%, transparent 100%);
         display: flex;
         justify-content: center;
         align-items: flex-end;
 
         h1 {
-            font-family: 'Playfair Display', Georgia, serif;
+            font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: clamp(0.95rem, 2vw, 1.6rem);
             font-weight: 600;
             font-style: italic;
@@ -117,7 +126,7 @@
             overflow-wrap: break-word;
             word-break: break-word;
             max-width: 760px;
-            background: rgba(45, 58, 49, 0.45);
+            background: rgba(44, 58, 62, 0.45);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -140,7 +149,7 @@
     gap: 1.5rem;
     align-items: center;
     text-align: center;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Lato', sans-serif;
 
     > div {
         display: flex;
@@ -206,21 +215,21 @@
 
 // Italic serif pull-quote
 .botanical-pullquote {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Cormorant Garamond', Georgia, serif;
     font-style: italic;
     font-size: clamp(1.25rem, 2vw, 1.625rem);
-    color: #8C9A84;
+    color: #2C6975;
     line-height: 1.5;
-    border-left: 2px solid #DCCFC2;
+    border-left: 2px solid #8FA6AE;
     padding-left: 1.5rem;
     margin: 2rem 0;
 }
 
 // Font utilities
 .font-varela {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Lato', sans-serif;
 }
 
 .font-inter {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Lato', sans-serif;
 }

@@ -38,7 +38,7 @@ export default function AngstVoorHonden() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-5 fade-up">
-              <p className="font-sans text-xs tracking-widest uppercase text-botanical-sage">Je voelt het</p>
+              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold">Je voelt het</p>
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-botanical-fg leading-tight">
                 Je voelt dat het tijd is voor <em className="italic">verandering</em>
               </h2>
@@ -65,7 +65,7 @@ export default function AngstVoorHonden() {
               <img src={Foto2} alt="" className="w-full aspect-[4/5] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
             </div>
             <div className="space-y-5 fade-up order-1 md:order-2">
-              <p className="font-sans text-xs tracking-widest uppercase text-botanical-sage">De aanpak</p>
+              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold">De aanpak</p>
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-botanical-fg leading-tight">
                 De oplossing zit <em className="italic">in jou</em>
               </h2>
@@ -89,7 +89,7 @@ export default function AngstVoorHonden() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-5 fade-up">
-              <p className="font-sans text-xs tracking-widest uppercase text-botanical-sage">Het programma</p>
+              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold">Het programma</p>
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-botanical-fg leading-tight">
                 Pak de regie en neem <em className="italic">de stap</em>
               </h2>

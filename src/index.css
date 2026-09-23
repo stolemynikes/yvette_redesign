@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Dr+Sugiyama&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,23 +6,24 @@
 
 :root {
   /* Botanical Design Tokens */
-  --botanical-bg: #F9F8F4;
-  --botanical-fg: #2D3A31;
-  --botanical-sage: #8C9A84;
-  --botanical-clay: #DCCFC2;
-  --botanical-stone: #E6E2DA;
-  --botanical-terra: #C27B66;
-  --botanical-card: #F2F0EB;
+  --botanical-bg: #F2F3F2;
+  --botanical-fg: #394348;
+  --botanical-sage: #2C6975;
+  --botanical-stone: #8FA6AE;
+  --botanical-terra: #B58C99;
+  --botanical-clay: #8FA6AE;
+  --botanical-card: #FAFAF8;
 
   /* Legacy tokens (kept for SCSS compat during migration) */
-  --primary: #8C9A84;
-  --primary-accent: #F2F0EB;
-  --secondary: #F9F8F4;
-  --btncolor: #2D3A31;
-  --green: #F2F0EB;
+  --primary: #2C6975;
+  --primary-accent: #FAFAF8;
+  --secondary: #F2F3F2;
+  --btncolor: #2C6975;
+  --green: #FAFAF8;
 
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Source Sans 3', system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Lato', system-ui, sans-serif;
+  --font-script: 'Dr Sugiyama', cursive;   /* logo */
 }
 
 *,
@@ -35,6 +36,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* Het vlak buiten de pagina — zichtbaar bij doorveren onderaan — krijgt
+     de kleur van de footer, zodat daar geen lichte balk verschijnt. */
+  background-color: var(--botanical-fg);
 }
 
 body {
@@ -51,6 +55,33 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
   color: var(--botanical-fg);
   line-height: 1.2;
+}
+
+/* Cormorant Garamond heeft een kleinere x-hoogte dan Playfair Display en
+   leest daardoor bij dezelfde pixelmaat kleiner. font-size-adjust trekt dat
+   gelijk zonder dat de maten in de componenten hoeven te veranderen.
+   Alleen op koppen: op de navigatie en de knoppen zou extra breedte de balk
+   laten vastlopen. Eerste regel = oudere browsers. */
+h1, h2, h3, h4, h5, h6 {
+  font-size-adjust: 0.50;
+  font-size-adjust: ex-height 0.50;
+}
+
+/* Cormorant heeft lange boven- en onderstokken, zeker cursief. Met de
+   krappe regelafstand uit het oorspronkelijke ontwerp raken de regels van
+   een kop over twee regels elkaar. Element + klasse wint van .leading-tight. */
+h1.font-serif,
+h2.font-serif,
+h3.font-serif {
+  line-height: 1.3;
+}
+
+/* Nederlandse samenstellingen als "Kennismakingsgesprek" zijn één woord en
+   passen op een telefoon niet in de kolom; zonder afbreken duwen ze de hele
+   pagina breder. */
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 a {

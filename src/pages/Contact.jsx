@@ -42,7 +42,7 @@ export default function Contact() {
 
       <div className="page-banner">
         <img src={Banner} alt="Contact" />
-        <div><h1>"Elke samenwerking begint bij het maken van contact"</h1></div>
+        <div><h1>"Elke samenwerking begint bij contact"</h1></div>
       </div>
 
       <section className="py-20 md:py-28">
@@ -52,13 +52,17 @@ export default function Contact() {
             {/* Contact info */}
             <div className="space-y-8">
               <div>
-                <p className="font-sans text-xs tracking-widest uppercase text-botanical-sage mb-4">Neem contact op</p>
+                <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-4">Kennismaken?</p>
                 <h2 className="font-serif text-3xl md:text-4xl font-bold text-botanical-fg leading-tight mb-3">
-                  We horen <em className="italic">graag</em> van je
+                  Een klik is <em className="italic">belangrijk</em>
                 </h2>
                 <p className="font-sans text-lg text-botanical-fg/70 leading-relaxed">
-                  Heb je vragen of wil je meer weten? Neem gerust contact op.
-                  Ik reageer binnen 2 werkdagen.
+                  Misschien herken je jezelf in wat je op deze website hebt gelezen. Of misschien
+                  wil je eerst gewoon even bespreken waar je tegenaan loopt. Tijdens een
+                  vrijblijvend kennismakingsgesprek is er alle ruimte om te vertellen wat er speelt
+                  en wat je graag anders zou willen. We kijken samen of mijn manier van werken bij
+                  jou past. Want goede coaching begint voor mij met vertrouwen en het gevoel dat je
+                  jezelf kunt zijn.
                 </p>
               </div>
 
@@ -138,14 +142,14 @@ export default function Contact() {
                   onSubmit={sendEmail}
                   className={`bg-white rounded-3xl shadow-botanical-md p-8 space-y-6 transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}
                 >
-                  <h3 className="font-serif text-2xl font-bold text-botanical-fg">Stuur een bericht</h3>
+                  <h3 className="font-serif text-2xl font-bold text-botanical-fg">Misschien wil je eerst iets vragen?</h3>
 
                   <div>
                     <label className="block font-sans text-sm text-botanical-fg/70 mb-2">Wat is je naam?</label>
                     <input
                       type="text"
                       name="user_name"
-                      className="w-full border-b border-botanical-stone bg-transparent py-3 font-sans text-botanical-fg placeholder-botanical-fg/30 focus:outline-none focus:border-botanical-sage transition-colors duration-300"
+                      className="w-full border-b border-botanical-stone bg-transparent py-3 font-sans text-base text-botanical-fg placeholder-botanical-fg/30 focus:outline-none focus:border-botanical-sage transition-colors duration-300"
                       placeholder="Jouw naam"
                     />
                   </div>
@@ -155,7 +159,7 @@ export default function Contact() {
                     <input
                       type="email"
                       name="user_email"
-                      className="w-full border-b border-botanical-stone bg-transparent py-3 font-sans text-botanical-fg placeholder-botanical-fg/30 focus:outline-none focus:border-botanical-sage transition-colors duration-300"
+                      className="w-full border-b border-botanical-stone bg-transparent py-3 font-sans text-base text-botanical-fg placeholder-botanical-fg/30 focus:outline-none focus:border-botanical-sage transition-colors duration-300"
                       placeholder="jouw@email.nl"
                     />
                   </div>
@@ -165,7 +169,7 @@ export default function Contact() {
                     <textarea
                       name="message"
                       rows={5}
-                      className="w-full border-b border-botanical-stone bg-transparent py-3 font-sans text-botanical-fg placeholder-botanical-fg/30 focus:outline-none focus:border-botanical-sage transition-colors duration-300 resize-none"
+                      className="w-full border-b border-botanical-stone bg-transparent py-3 font-sans text-base text-botanical-fg placeholder-botanical-fg/30 focus:outline-none focus:border-botanical-sage transition-colors duration-300 resize-none"
                       placeholder="Vertel me meer..."
                     />
                   </div>

@@ -29,7 +29,7 @@ export default function Navbar() {
   }, []);
 
   const navLinkClass = ({ isActive }) =>
-    `relative font-sans text-sm tracking-wide transition-colors duration-300 pb-0.5 ${
+    `relative font-sans text-sm tracking-wide whitespace-nowrap transition-colors duration-300 pb-0.5 ${
       isActive
         ? 'text-botanical-sage after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-botanical-sage'
         : 'text-botanical-fg hover:text-botanical-sage'
@@ -44,7 +44,8 @@ export default function Navbar() {
 
   const pages = [
     { to: '/', label: 'Home', exact: true },
-    { to: '/over-ons', label: 'Over ons' },
+    { to: '/hoe-ik-werk', label: 'Hoe ik werk' },
+    { to: '/over-mij', label: 'Over mij' },
     { to: '/tarieven', label: 'Tarieven' },
     { to: '/contact', label: 'Contact' },
   ];
@@ -55,23 +56,23 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
           scrolled
-            ? 'bg-botanical-bg/95 backdrop-blur-sm shadow-botanical-sm border-b border-botanical-stone'
-            : 'bg-botanical-bg border-b border-botanical-stone'
+            ? 'bg-botanical-bg/95 backdrop-blur-sm shadow-botanical-md'
+            : 'bg-botanical-bg shadow-botanical-sm'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="max-w-[88rem] mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
 
             {/* Logo */}
             <Link
               to="/"
-              className="font-serif text-xl font-semibold italic text-botanical-fg hover:text-botanical-sage transition-colors duration-300 shrink-0"
+              className="font-script text-3xl md:text-[2rem] leading-none pb-1 text-botanical-sage hover:text-botanical-fg transition-colors duration-300 shrink-0 whitespace-nowrap"
             >
               Yvette van Zadel
             </Link>
 
             {/* Desktop nav links */}
-            <div className="hidden lg:flex items-center gap-7">
+            <div className="hidden 2xl:flex items-center gap-x-5 ml-10 mr-6">
               {pages.map(({ to, label, exact }) => (
                 <NavLink
                   key={to}
@@ -91,7 +92,7 @@ export default function Navbar() {
             </div>
 
             {/* CTA + Hamburger */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 shrink-0">
               <Link
                 to="/kennismakingsgesprek"
                 className="hidden md:inline-flex button-nav"
@@ -103,7 +104,7 @@ export default function Navbar() {
               <button
                 onClick={toggleNavbar}
                 aria-label="Menu openen"
-                className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 rounded-full hover:bg-botanical-card transition-colors duration-300"
+                className="2xl:hidden flex flex-col justify-center items-center w-11 h-11 gap-1.5 rounded-full hover:bg-botanical-card transition-colors duration-300"
               >
                 <span
                   className={`block w-5 h-px bg-botanical-fg transition-all duration-300 ${
@@ -132,8 +133,8 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 transition-all duration-500 ${
-          openNavbar ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        className={`fixed inset-0 z-40 overflow-hidden transition-all duration-500 ${
+          openNavbar ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none invisible'
         }`}
       >
         {/* Backdrop */}
@@ -159,7 +160,7 @@ export default function Navbar() {
                   end={exact}
                   onClick={closeNavbar}
                   className={({ isActive }) =>
-                    `font-sans text-lg py-2 border-b border-botanical-stone transition-colors duration-300 ${
+                    `font-sans text-lg py-3 border-b border-botanical-stone transition-colors duration-300 ${
                       isActive ? 'text-botanical-sage' : 'text-botanical-fg hover:text-botanical-sage'
                     }`
                   }
@@ -177,7 +178,7 @@ export default function Navbar() {
                   to={to}
                   onClick={closeNavbar}
                   className={({ isActive }) =>
-                    `font-sans text-lg py-2 border-b border-botanical-stone transition-colors duration-300 ${
+                    `font-sans text-lg py-3 border-b border-botanical-stone transition-colors duration-300 ${
                       isActive ? 'text-botanical-sage' : 'text-botanical-fg hover:text-botanical-sage'
                     }`
                   }

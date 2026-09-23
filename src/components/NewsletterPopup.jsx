@@ -24,7 +24,7 @@ export default function NewsletterPopup() {
 
   return (
     <div
-      className="fixed bottom-6 right-6 z-50 w-72 bg-white rounded-2xl shadow-botanical-xl overflow-hidden"
+      className="fixed bottom-4 right-4 left-4 sm:left-auto sm:bottom-6 sm:right-6 z-50 sm:w-72 bg-white rounded-2xl shadow-botanical-xl overflow-hidden"
       style={{
         animation: closing
           ? 'popupOut 0.35s cubic-bezier(0.4, 0, 1, 1) both'
