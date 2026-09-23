@@ -70,6 +70,16 @@ const testimonials = [
   { quote: 'Super bedankt voor je begeleiding. J. heeft echt stappen gemaakt dankzij jou en Fred.', name: 'S.v.H.', service: 'Angst voor honden' },
 ];
 
+const signals = [
+  'je hoofd staat voortdurend aan',
+  'je piekert en kunt moeilijk loslaten',
+  'je hebt het gevoel dat je achter de feiten aanloopt',
+  'je bent snel geïrriteerd, emotioneel of overprikkeld',
+  'je hebt steeds minder energie',
+  'ontspannen lukt niet meer vanzelf',
+  'je probeert vooral door te gaan, terwijl dat steeds moeilijker wordt',
+];
+
 // ─── Component ─────────────────────────────────────────────────────────────
 
 export default function Home() {
@@ -158,7 +168,7 @@ export default function Home() {
       >
         {/* Decorative background blob */}
         <div
-          className="hidden lg:block absolute right-0 top-0 w-1/2 h-[115%] bg-botanical-card opacity-60 pointer-events-none"
+          className="hidden lg:block absolute right-0 top-0 w-1/2 h-[115%] bg-botanical-stone/25 pointer-events-none"
           style={{ borderRadius: '0 0 0 60% / 0 0 0 40%' }}
         />
 
@@ -167,24 +177,25 @@ export default function Home() {
 
             {/* Text */}
             <div className="hero-text order-2 lg:order-1">
-              <span className="inline-block font-sans text-xs tracking-widest uppercase text-botanical-terra mb-6 fade-up">
-                Coaching · Ademwerk · Stressmanagement
+              <span className="inline-block font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-6 fade-up">
+                Stresscoach | Ademcoach | HeartMath coach
               </span>
               <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-botanical-fg mb-6">
-                Voel jij te veel onrust en wil je weer{' '}
-                <em className="italic text-botanical-sage">ontspannen</em> leven?
+                Van spanning naar{' '}
+                <em className="italic text-botanical-sage">veerkracht</em>
               </h1>
               <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed mb-10 max-w-lg">
-                Je hoofd staat niet stil. Je piekert, voelt de druk en komt niet tot rust.
-                Samen vinden we jouw weg naar meer kalmte en veerkracht.
+                Meer rust in je hoofd. Meer energie. Meer regie over je leven.
+                Je hoofd staat niet stil. Je denkt aan alles wat nog moet, wat niet af is
+                en wat beter moet.
               </p>
               <div className="flex flex-wrap gap-4 items-center">
                 <Link to="/kennismakingsgesprek" className="button-nav">
                   Kennismakingsgesprek
                 </Link>
                 <Link
-                  to="/over-ons"
-                  className="font-sans text-sm tracking-wide text-botanical-fg/60 hover:text-botanical-terra transition-colors duration-300 underline underline-offset-4"
+                  to="/over-mij"
+                  className="font-sans text-sm tracking-wide text-botanical-fg/60 hover:text-botanical-sage transition-colors duration-300 underline underline-offset-4"
                 >
                   Over Yvette →
                 </Link>
@@ -206,13 +217,6 @@ export default function Home() {
                     className="w-full h-auto block hover:scale-105 transition-transform duration-1000 ease-out"
                   />
                 </div>
-                {/* Floating quote card */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[85%] bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-botanical-md">
-                  <p className="font-serif italic text-sm text-botanical-fg text-center leading-snug">
-                    "Spanning is wie je denkt te moeten zijn,<br />
-                    ontspanning is wie je bent."
-                  </p>
-                </div>
               </div>
             </div>
 
@@ -225,21 +229,43 @@ export default function Home() {
       <section className="intro-section py-20 md:py-28 bg-botanical-bg">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <div className="fade-up">
-            <p className="font-sans text-xs tracking-widest uppercase text-botanical-sage mb-6">Herken jij dit?</p>
+            <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-6">Je hoeft niet eerst uit te vallen</p>
           </div>
           <div className="space-y-5 fade-up">
             <p className="font-serif text-2xl md:text-3xl text-botanical-fg leading-relaxed">
-              Je denkt de hele dag aan wat je nog moet doen — de afspraken, de tijd die tekort komt,
-              de dingen waar je tegenop ziet.
+              Je hoofd staat niet stil.
             </p>
             <p className="font-sans text-lg text-botanical-fg/70 leading-relaxed">
-              Je hoofd staat niet stil. Negatieve gedachten dringen zich op.
-              Je slaapt slecht, bent niet veerkrachtig en hebt weinig energie.
-              Je hebt het gevoel dat je de controle kwijt raakt.
+              Je denkt aan alles wat nog moet, wat niet af is en wat beter moet. Je probeert
+              overzicht te houden, gaat door en houdt zoveel mogelijk onder controle. Maar
+              ondertussen merk je dat het steeds meer moeite kost.
+            </p>
+          </div>
+
+          <div className="mt-12 fade-up">
+            <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-6">Misschien herken je dit</p>
+            <ul className="grid sm:grid-cols-2 gap-x-10 gap-y-3 text-left max-w-2xl mx-auto">
+              {signals.map((signal) => (
+                <li key={signal} className="flex items-start gap-3">
+                  <span className="mt-3 h-0.5 w-4 bg-botanical-terra shrink-0" />
+                  <span className="font-sans text-base text-botanical-fg/70 leading-relaxed">{signal}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mt-12 space-y-5 fade-up">
+            <p className="font-serif text-2xl md:text-3xl text-botanical-fg leading-relaxed">
+              Aan de buitenkant gaat het misschien nog prima.
+              <em className="italic text-botanical-sage"> Vanbinnen voelt het steeds zwaarder.</em>
+            </p>
+            <p className="font-sans text-lg text-botanical-fg/70 leading-relaxed">
+              Als je al langere tijd over je grenzen gaat, is harder doorgaan meestal niet de
+              oplossing.
             </p>
           </div>
           <div className="mt-8 fade-up">
-            <div className="w-16 h-px bg-botanical-clay mx-auto" />
+            <div className="w-16 h-px bg-botanical-terra mx-auto" />
           </div>
         </div>
       </section>
@@ -260,17 +286,21 @@ export default function Home() {
 
             {/* Text */}
             <div className="fade-up">
-              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra mb-5">De eerste stap</p>
+              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-5">Van spanning naar veerkracht</p>
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-botanical-fg leading-tight mb-6">
-                Wil jij ook meer rust in je hoofd en{' '}
-                <em className="italic">minder stress</em> ervaren?
+                Niet alleen begrijpen wat er gebeurt, maar{' '}
+                <em className="italic">ervaren</em> wat voor jou werkt
               </h2>
               <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed mb-4">
-                Neem dan vandaag de eerste stap.
+                In mijn coaching leer je niet alleen begrijpen wat er met je gebeurt. Je leert
+                vooral ervaren hoe je zelf invloed kunt krijgen op spanning, emoties en je
+                reacties daarop.
               </p>
               <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed mb-10">
-                In een vrijblijvend kennismakingsgesprek krijgen we samen helder
-                wat jouw specifieke vraag is en hoe ik jou kan ondersteunen.
+                We brengen je aandacht uit je hoofd en terug naar je lichaam. Met gesprekken,
+                ademhaling, lichaamsgerichte oefeningen en HeartMath met HRV-biofeedback ontdek
+                je wat voor jou werkt. Zo ontstaat ruimte voor meer rust, meer helderheid, meer
+                vertrouwen, meer energie en meer regie.
               </p>
               <Link to="/kennismakingsgesprek" className="button-nav">
                 Plan een kennismakingsgesprek
@@ -287,7 +317,7 @@ export default function Home() {
 
           {/* Heading */}
           <div className="text-center mb-16 md:mb-20 fade-up">
-            <p className="font-sans text-xs tracking-widest uppercase text-botanical-sage mb-4">Waar ik mee kan helpen</p>
+            <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-4">Waar ik mee kan helpen</p>
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-botanical-fg leading-tight">
               Mijn <em className="italic">diensten</em>
             </h2>
@@ -324,7 +354,7 @@ export default function Home() {
                     </h3>
                     <p className="font-serif italic text-sm text-botanical-terra mb-3">{service.subtitle}</p>
                     <p className="font-sans text-sm text-botanical-fg/65 leading-relaxed mb-4 flex-1">{service.description}</p>
-                    <span className="font-sans text-xs tracking-widest uppercase text-botanical-sage group-hover:text-botanical-terra inline-flex items-center gap-1 group-hover:gap-2 transition-all duration-300">
+                    <span className="font-sans text-xs tracking-widest uppercase text-botanical-sage inline-flex items-center gap-1 group-hover:gap-2 transition-all duration-300">
                       Meer lezen
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="group-hover:translate-x-1 transition-transform duration-300">
                         <path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -340,7 +370,7 @@ export default function Home() {
 
       {/* ── Decorative divider ───────────────────────────────────────────── */}
       <div className="flex items-center justify-center py-4 bg-botanical-bg">
-        <div className="w-px h-12 bg-botanical-clay" />
+        <div className="w-px h-12 bg-botanical-terra" />
       </div>
 
       {/* ── Testimonials marquee ─────────────────────────────────────────── */}
@@ -370,7 +400,7 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12 fade-up">
-            <p className="font-sans text-xs tracking-widest uppercase text-botanical-sage mb-4">Ervaringen</p>
+            <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-4">Ervaringen</p>
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-botanical-fg">
               Wat anderen <em className="italic">zeggen</em>
             </h2>
@@ -403,7 +433,7 @@ export default function Home() {
                   {t.quote.length > 120 && (
                     <button
                       onClick={() => setModal(t)}
-                      className="font-sans text-xs text-botanical-sage group-hover:text-botanical-terra transition-colors duration-200 mb-3 block"
+                      className="font-sans text-sm text-botanical-sage group-hover:text-botanical-sage transition-colors duration-200 mb-2 block py-3 -my-2"
                     >
                       Lees meer →
                     </button>
@@ -456,14 +486,16 @@ export default function Home() {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <p className="font-sans text-xs tracking-widest uppercase text-botanical-clay/70 mb-5">Begin vandaag</p>
           <h2 className="font-serif text-3xl md:text-5xl font-bold text-white leading-tight mb-8">
-            Klaar om de eerste stap te <em className="italic text-botanical-clay">zetten</em>?
+            Wil jij weer <em className="italic text-botanical-clay">ruimte</em> ervaren?
           </h2>
           <p className="font-sans text-lg text-white/65 mb-10">
-            Het kennismakingsgesprek is vrijblijvend en gratis. Laten we samen kijken wat jij nodig hebt.
+            Je hoeft niet te wachten tot het echt niet meer gaat. In een vrijblijvend
+            kennismakingsgesprek bespreken we waar je tegenaan loopt, wat je graag anders zou
+            willen en of mijn manier van werken bij je past.
           </p>
           <Link
             to="/kennismakingsgesprek"
-            className="inline-flex items-center justify-center bg-botanical-terra text-white rounded-full px-8 py-4 font-sans text-sm tracking-widest uppercase font-semibold hover:bg-white hover:text-botanical-fg transition-all duration-300 shadow-botanical-xl"
+            className="inline-flex items-center justify-center bg-botanical-sage text-white rounded-full px-8 py-4 font-sans text-sm tracking-widest uppercase font-semibold hover:bg-white hover:text-botanical-fg transition-all duration-300 shadow-botanical-xl"
           >
             Kennismakingsgesprek plannen
           </Link>

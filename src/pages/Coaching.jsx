@@ -36,7 +36,7 @@ export default function Coaching() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-5 fade-up">
-              <p className="font-sans text-xs tracking-widest uppercase text-botanical-sage">Persoonlijke ontwikkeling</p>
+              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold">Persoonlijke ontwikkeling</p>
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-botanical-fg leading-tight">
                 Ga voor innerlijke verdieping en <em className="italic">persoonlijke ontwikkeling</em>
               </h2>
@@ -65,7 +65,7 @@ export default function Coaching() {
               <img src={Foto2} alt="" className="w-full aspect-[4/5] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
             </div>
             <div className="space-y-5 fade-up order-1 md:order-2">
-              <p className="font-sans text-xs tracking-widest uppercase text-botanical-sage">Over Fred</p>
+              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold">Over Fred</p>
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-botanical-fg leading-tight">
                 Een sessie met Fred is altijd <em className="italic">ontspannen</em>
               </h2>
@@ -89,7 +89,7 @@ export default function Coaching() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-5 fade-up">
-              <p className="font-sans text-xs tracking-widest uppercase text-botanical-sage">Begin vandaag</p>
+              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold">Begin vandaag</p>
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-botanical-fg leading-tight">
                 Pak de regie en kies voor <em className="italic">verandering</em>
               </h2>

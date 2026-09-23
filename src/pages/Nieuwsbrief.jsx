@@ -65,9 +65,9 @@ export default function Nieuwsbrief() {
       {/* Header — same style as Tarieven */}
       <section className="py-24 md:py-32 text-center bg-botanical-card">
         <div className="max-w-3xl mx-auto px-6">
-          <p className="font-sans text-xs tracking-widest uppercase text-botanical-sage mb-6">Nieuwsbrief</p>
+          <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-6">Nieuwsbrief</p>
           <h1 className="font-serif text-4xl md:text-6xl font-bold text-botanical-fg leading-tight mb-6">
-            Blijf op de <em className="italic text-botanical-terra">hoogte</em>
+            Blijf op de <em className="italic text-botanical-sage">hoogte</em>
           </h1>
           <p className="font-sans text-lg text-botanical-fg/70 leading-relaxed max-w-xl mx-auto">
             Ontvang tips, inspiratie en nieuws over coaching, ademwerk en stressmanagement — rechtstreeks in je inbox.
@@ -82,7 +82,7 @@ export default function Nieuwsbrief() {
 
             {/* Left: what to expect */}
             <div>
-              <p className="font-sans text-xs tracking-widest uppercase text-botanical-sage mb-4">Wat kan je verwachten?</p>
+              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-4">Wat kan je verwachten?</p>
               <h2 className="font-serif text-3xl font-bold text-botanical-fg leading-tight mb-6">
                 Praktische <em className="italic">inzichten</em> voor meer rust
               </h2>
@@ -137,7 +137,7 @@ export default function Nieuwsbrief() {
                       type="text"
                       value={name}
                       onChange={e => setName(e.target.value)}
-                      className="w-full border-b border-botanical-stone bg-transparent py-3 font-sans text-botanical-fg placeholder-botanical-fg/30 focus:outline-none focus:border-botanical-sage transition-colors duration-300"
+                      className="w-full border-b border-botanical-stone bg-transparent py-3 font-sans text-base text-botanical-fg placeholder-botanical-fg/30 focus:outline-none focus:border-botanical-sage transition-colors duration-300"
                       placeholder="Jouw naam"
                     />
                   </div>
@@ -148,7 +148,7 @@ export default function Nieuwsbrief() {
                       type="email"
                       value={email}
                       onChange={e => setEmail(e.target.value)}
-                      className="w-full border-b border-botanical-stone bg-transparent py-3 font-sans text-botanical-fg placeholder-botanical-fg/30 focus:outline-none focus:border-botanical-sage transition-colors duration-300"
+                      className="w-full border-b border-botanical-stone bg-transparent py-3 font-sans text-base text-botanical-fg placeholder-botanical-fg/30 focus:outline-none focus:border-botanical-sage transition-colors duration-300"
                       placeholder="jouw@email.nl"
                     />
                   </div>
@@ -183,7 +183,7 @@ export default function Nieuwsbrief() {
           </p>
           <Link
             to="/kennismakingsgesprek"
-            className="inline-flex items-center justify-center bg-botanical-terra text-white rounded-full px-8 py-4 font-sans text-sm tracking-widest uppercase font-semibold hover:bg-white hover:text-botanical-fg transition-all duration-300 shadow-botanical-xl"
+            className="inline-flex items-center justify-center bg-botanical-sage text-white rounded-full px-8 py-4 font-sans text-sm tracking-widest uppercase font-semibold hover:bg-white hover:text-botanical-fg transition-all duration-300 shadow-botanical-xl"
           >
             Kennismakingsgesprek plannen
           </Link>

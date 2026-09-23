@@ -13,9 +13,9 @@ export default function Kennismakingsgesprek() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
 
             <div className="space-y-6">
-              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra">Gratis &amp; vrijblijvend</p>
+              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold">Gratis &amp; vrijblijvend</p>
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-botanical-fg leading-tight">
-                Kennismakings<em className="italic">gesprek</em>
+                Kennismakingsgesprek
               </h1>
               <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
                 Plan hier je gratis gesprek van 30 minuten.
@@ -62,7 +62,7 @@ export default function Kennismakingsgesprek() {
       {/* What to expect */}
       <section className="py-20 md:py-28 bg-botanical-bg">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="font-sans text-xs tracking-widest uppercase text-botanical-sage mb-5">Wat kun je verwachten?</p>
+          <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-5">Wat kun je verwachten?</p>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-botanical-fg mb-14">
             Een <em className="italic">warm</em> en persoonlijk gesprek
           </h2>
@@ -73,7 +73,7 @@ export default function Kennismakingsgesprek() {
               { number: '2', unit: 'opties', label: 'Telefonisch of beeldbellen' },
             ].map((item) => (
               <div key={item.label} className="bg-white rounded-3xl p-8 shadow-botanical-md">
-                <p className="font-serif text-5xl font-bold text-botanical-terra mb-1">
+                <p className="font-serif text-5xl font-bold text-botanical-sage mb-1">
                   {item.number}<span className="text-2xl text-botanical-sage"> {item.unit}</span>
                 </p>
                 <p className="font-sans text-sm text-botanical-fg/65 mt-3">{item.label}</p>
@@ -96,7 +96,7 @@ export default function Kennismakingsgesprek() {
             href="https://calendly.com/yvettevanzadel/30min"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center bg-botanical-terra text-white rounded-full px-8 py-4 font-sans text-sm tracking-widest uppercase font-semibold hover:bg-white hover:text-botanical-fg transition-all duration-300 shadow-botanical-xl"
+            className="inline-flex items-center justify-center bg-botanical-sage text-white rounded-full px-8 py-4 font-sans text-sm tracking-widest uppercase font-semibold hover:bg-white hover:text-botanical-fg transition-all duration-300 shadow-botanical-xl"
           >
             Plan je kennismakingsgesprek
           </a>

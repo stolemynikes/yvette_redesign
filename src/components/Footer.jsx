@@ -15,7 +15,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <Link
               to="/"
-              className="font-serif text-2xl italic font-semibold text-white hover:text-botanical-clay transition-colors duration-300 block mb-4"
+              className="font-script text-4xl leading-none text-white hover:text-botanical-clay transition-colors duration-300 block mb-4"
             >
               Yvette van Zadel
             </Link>
@@ -30,7 +30,7 @@ export default function Footer() {
             <div className="flex flex-col gap-3">
               {[
                 { to: '/', label: 'Home' },
-                { to: '/over-ons', label: 'Over ons' },
+                { to: '/over-mij', label: 'Over mij' },
                 { to: '/tarieven', label: 'Tarieven' },
                 { to: '/contact', label: 'Contact' },
                 { to: '/nieuwsbrief', label: 'Nieuwsbrief' },
@@ -38,7 +38,7 @@ export default function Footer() {
                 <Link
                   key={to}
                   to={to}
-                  className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-300"
+                  className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-300 inline-block py-3 md:py-0"
                 >
                   {label}
                 </Link>
@@ -59,7 +59,7 @@ export default function Footer() {
                 <Link
                   key={to}
                   to={to}
-                  className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-300"
+                  className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-300 inline-block py-3 md:py-0"
                 >
                   {label}
                 </Link>
@@ -73,13 +73,13 @@ export default function Footer() {
             <div className="flex flex-col gap-3 mb-8">
               <a
                 href="tel:+31627281458"
-                className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-300"
+                className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-300 inline-block py-3 md:py-0"
               >
                 +31 6 27 28 14 58
               </a>
               <a
                 href="mailto:info@yvettevanzadel.nl"
-                className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-300"
+                className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-300 inline-block py-3 md:py-0"
               >
                 info@yvettevanzadel.nl
               </a>
@@ -89,13 +89,13 @@ export default function Footer() {
             <div className="flex flex-col gap-3">
               <Link
                 to="/algemene-voorwaarden"
-                className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-300"
+                className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-300 inline-block py-3 md:py-0"
               >
                 Algemene voorwaarden
               </Link>
               <Link
                 to="/privacyverklaring"
-                className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-300"
+                className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-300 inline-block py-3 md:py-0"
               >
                 Privacyverklaring
               </Link>
@@ -113,7 +113,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Yvette van Zadel. Alle rechten voorbehouden.
           </p>
           <p className="font-sans text-xs text-white/40">
-            {/* Met <span className="text-botanical-terra">♥</span> gemaakt */}
+            {/* Met <span className="text-botanical-sage">♥</span> gemaakt */}
           </p>
         </div>
       </div>

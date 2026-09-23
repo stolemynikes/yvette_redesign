@@ -11,10 +11,11 @@ import Ademwerk from './pages/Ademwerk'
 import AngstVoorHonden from './pages/AngstVoorHonden'
 import Coaching from './pages/Coaching'
 import Stressmanagement from './pages/Stressmanagement'
-import OverOns from './pages/OverOns'
+import OverMij from './pages/OverMij'
 import Tarieven from './pages/Tarieven'
 import Contact from './pages/Contact'
 import Nieuwsbrief from './pages/Nieuwsbrief'
+import HoeIkWerk from './pages/HoeIkWerk'
 import NewsletterPopup from './components/NewsletterPopup'
 
 
@@ -76,7 +77,9 @@ function App() {
             <Route path='/coaching' exact element={<Coaching/>}/>
             <Route path='/angst-voor-honden' exact element={<AngstVoorHonden/>}/>
             <Route path='/kennismakingsgesprek' exact element={<Kennismakingsgesprek/>}/>
-            <Route path='/over-ons' exact element={<OverOns/>}/>
+            <Route path='/hoe-ik-werk' exact element={<HoeIkWerk/>}/>
+            <Route path='/over-mij' exact element={<OverMij/>}/>
+            <Route path='/over-ons' exact element={<Navigate to='/over-mij' replace/>}/>
             <Route path='/tarieven' exact element={<Tarieven/>}/>
             <Route path='/contact' exact element={<Contact/>}/>
             <Route path='/algemene-voorwaarden' exact element={<Algemenevoorwaarden/>}/>
