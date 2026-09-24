@@ -7,21 +7,14 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import Algemenevoorwaarden from './pages/Algemene-voorwaarden'
 import Privacyverklaring from './pages/Privacyverklaring'
-import Ademwerk from './pages/Ademwerk'
-import AngstVoorHonden from './pages/AngstVoorHonden'
-import Coaching from './pages/Coaching'
-import Stressmanagement from './pages/Stressmanagement'
 import OverMij from './pages/OverMij'
-import Tarieven from './pages/Tarieven'
 import Contact from './pages/Contact'
-import Nieuwsbrief from './pages/Nieuwsbrief'
 import HoeIkWerk from './pages/HoeIkWerk'
-import NewsletterPopup from './components/NewsletterPopup'
+import MijnAanbod from './pages/MijnAanbod'
 
 
 //router
 import { Routes, Route, Navigate, useLocation} from 'react-router-dom'
-import Kennismakingsgesprek from './pages/Kennismakingsgesprek'
 import { useEffect, useRef } from 'react'
 
 //global styling
@@ -70,27 +63,26 @@ function App() {
 
             <Route path="/" exact element={<Home/>}/>\
             <Route path="/*" exact element={<Navigate to='/'/>}/>
-            {/* <Route path='/ademwerk' exact element={<Ademwerk/>}/> */}
-            {/* tijdelijk */}
-                <Route path='/ademwerk' exact element={<Ademwerk/>}/>
-            {/*  */}
-            <Route path='/coaching' exact element={<Coaching/>}/>
-            <Route path='/angst-voor-honden' exact element={<AngstVoorHonden/>}/>
-            <Route path='/kennismakingsgesprek' exact element={<Kennismakingsgesprek/>}/>
+            <Route path='/mijn-aanbod' exact element={<MijnAanbod/>}/>
+
+            {/* Oude adressen blijven werken voor links die al gedeeld zijn */}
+            <Route path='/tarieven' exact element={<Navigate to='/mijn-aanbod' replace/>}/>
+            <Route path='/stressmanagement' exact element={<Navigate to='/mijn-aanbod' replace/>}/>
+            <Route path='/ademwerk' exact element={<Navigate to='/mijn-aanbod' replace/>}/>
+            <Route path='/coaching' exact element={<Navigate to='/mijn-aanbod' replace/>}/>
+            <Route path='/angst-voor-honden' exact element={<Navigate to='/mijn-aanbod' replace/>}/>
+            <Route path='/kennismakingsgesprek' exact element={<Navigate to='/contact' replace/>}/>
+            <Route path='/nieuwsbrief' exact element={<Navigate to='/contact' replace/>}/>
             <Route path='/hoe-ik-werk' exact element={<HoeIkWerk/>}/>
             <Route path='/over-mij' exact element={<OverMij/>}/>
             <Route path='/over-ons' exact element={<Navigate to='/over-mij' replace/>}/>
-            <Route path='/tarieven' exact element={<Tarieven/>}/>
             <Route path='/contact' exact element={<Contact/>}/>
             <Route path='/algemene-voorwaarden' exact element={<Algemenevoorwaarden/>}/>
             <Route path='/privacyverklaring' exact element={<Privacyverklaring/>}/>
-            <Route path='/stressmanagement' exact element={<Stressmanagement/>}/>
-            <Route path='/nieuwsbrief' exact element={<Nieuwsbrief/>}/>
 
         </Routes>
         </div>
 
-        {!excludedRoutes.includes(pathname) && <NewsletterPopup/>}
         {!excludedRoutes.includes(pathname) &&  <Footer/>}
 
     </>

@@ -30,31 +30,10 @@ export default function Footer() {
             <div className="flex flex-col gap-3">
               {[
                 { to: '/', label: 'Home' },
+                { to: '/mijn-aanbod', label: 'Mijn aanbod' },
+                { to: '/hoe-ik-werk', label: 'Hoe ik werk' },
                 { to: '/over-mij', label: 'Over mij' },
-                { to: '/tarieven', label: 'Tarieven' },
                 { to: '/contact', label: 'Contact' },
-                { to: '/nieuwsbrief', label: 'Nieuwsbrief' },
-              ].map(({ to, label }) => (
-                <Link
-                  key={to}
-                  to={to}
-                  className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-300 inline-block py-3 md:py-0"
-                >
-                  {label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Services */}
-          <div>
-            <p className="font-serif italic text-botanical-clay text-sm mb-5">Diensten</p>
-            <div className="flex flex-col gap-3">
-              {[
-                { to: '/stressmanagement', label: 'Stressmanagement' },
-                { to: '/ademwerk', label: 'Ademwerk' },
-                { to: '/coaching', label: 'Coaching' },
-                { to: '/angst-voor-honden', label: 'Angst voor honden' },
               ].map(({ to, label }) => (
                 <Link
                   key={to}

@@ -171,7 +171,7 @@ export default function OverMij() {
               </p>
               <p className="font-serif italic text-botanical-sage text-xl">Wil je kennismaken?</p>
               <div className="pt-2">
-                <Link to="/kennismakingsgesprek" className="button-nav">
+                <Link to="/contact" className="button-nav">
                   Plan een vrijblijvend kennismakingsgesprek
                 </Link>
               </div>

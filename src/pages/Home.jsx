@@ -8,46 +8,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Images
 import Banner from '../assets/images/homepage/banner.jpg';
-import HomePhoto from '../assets/images/homepage/Foto1.jpg';
-import StressPhoto from '../assets/images/stressmanagement/Banner.jpg';
-import AdemPhoto from '../assets/images/adem/BoxFoto.jpg';
-import CoachingPhoto from '../assets/images/coaching/BoxFoto.jpg';
-import HondenPhoto from '../assets/images/honden/BoxFoto.jpg';
+import PersoonlijkPhoto from '../assets/images/homepage/Foto1.jpg';       // 5. Persoonlijke begeleiding
+import UitvallenPhoto from '../assets/images/Stressmanagement/Foto2.jpg';  // 2. Je hoeft niet eerst uit te vallen
+import AanpakPhoto from '../assets/images/Adem/Foto1.jpg';                 // 4. Van spanning naar veerkracht
 
 // ─── Data ──────────────────────────────────────────────────────────────────
 
-const services = [
-  {
-    to: '/stressmanagement',
-    title: 'Stressmanagement',
-    subtitle: 'De verborgen wijsheid van het Hart',
-    description: 'Leer je zenuwstelsel te kalmeren en rust te vinden in het midden van de storm met de HeartMath-methode.',
-    image: StressPhoto,
-  },
-  {
-    to: '/ademwerk',
-    title: 'Ademwerk',
-    subtitle: 'Ademen, meer dan alleen in- en uit',
-    description: 'Ontdek hoe bewust ademhalen je helpt spanningen los te laten en je lichaam te helen van binnenuit.',
-    image: AdemPhoto,
-    offset: true,
-  },
-  {
-    to: '/coaching',
-    title: 'Coaching',
-    subtitle: 'Samen met een hond jezelf ontdekken',
-    description: 'Fred, onze reddingshond, fungeert als eerlijke spiegel en begeleidt je in een uniek coachtraject.',
-    image: CoachingPhoto,
-  },
-  {
-    to: '/angst-voor-honden',
-    title: 'Angst voor honden',
-    subtitle: 'Toon je lef',
-    description: 'Stap voor stap, op jouw tempo, bouw je vertrouwen op en ontdek dat honden een vriend kunnen zijn.',
-    image: HondenPhoto,
-    offset: true,
-  },
-];
+const ruimteVoor = ['meer rust', 'meer helderheid', 'meer vertrouwen', 'meer energie', 'meer regie'];
 
 const testimonials = [
   // Stressmanagement
@@ -84,10 +51,6 @@ const signals = [
 
 export default function Home() {
   const heroRef = useRef(null);
-  const introRef = useRef(null);
-  const ctaRef = useRef(null);
-  const servicesRef = useRef(null);
-  const testimonialsRef = useRef(null);
 
   // Modal state
   const [modal, setModal] = useState(null);
@@ -190,7 +153,7 @@ export default function Home() {
                 en wat beter moet.
               </p>
               <div className="flex flex-wrap gap-4 items-center">
-                <Link to="/kennismakingsgesprek" className="button-nav">
+                <Link to="/contact" className="button-nav">
                   Kennismakingsgesprek
                 </Link>
                 <Link
@@ -259,10 +222,6 @@ export default function Home() {
               Aan de buitenkant gaat het misschien nog prima.
               <em className="italic text-botanical-sage"> Vanbinnen voelt het steeds zwaarder.</em>
             </p>
-            <p className="font-sans text-lg text-botanical-fg/70 leading-relaxed">
-              Als je al langere tijd over je grenzen gaat, is harder doorgaan meestal niet de
-              oplossing.
-            </p>
           </div>
           <div className="mt-8 fade-up">
             <div className="w-16 h-px bg-botanical-terra mx-auto" />
@@ -270,41 +229,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CTA Section ──────────────────────────────────────────────────── */}
+      {/* ── Je hoeft niet eerst uit te vallen — foto 2 ───────────────────── */}
       <section className="cta-section py-16 md:py-24 bg-botanical-card">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-            {/* Image */}
             <div className="fade-up overflow-hidden rounded-[40px] shadow-botanical-lg group">
               <img
-                src={HomePhoto}
-                alt="Yvette van Zadel"
+                src={UitvallenPhoto}
+                alt=""
                 className="w-full aspect-[4/5] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             </div>
 
-            {/* Text */}
-            <div className="fade-up">
-              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-5">Van spanning naar veerkracht</p>
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-botanical-fg leading-tight mb-6">
-                Niet alleen begrijpen wat er gebeurt, maar{' '}
-                <em className="italic">ervaren</em> wat voor jou werkt
+            <div className="fade-up space-y-5">
+              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold">Herkenbaar?</p>
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-botanical-fg leading-tight">
+                Je hoeft niet eerst <em className="italic">uit te vallen</em>
               </h2>
-              <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed mb-4">
-                In mijn coaching leer je niet alleen begrijpen wat er met je gebeurt. Je leert
-                vooral ervaren hoe je zelf invloed kunt krijgen op spanning, emoties en je
-                reacties daarop.
+              <blockquote className="botanical-pullquote">
+                "Waarom lukt het me allemaal niet meer zoals vroeger?"
+              </blockquote>
+              <blockquote className="botanical-pullquote">
+                "Ik moet me gewoon wat beter organiseren en nog even volhouden."
+              </blockquote>
+              <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
+                Maar als je al langere tijd over je grenzen gaat, is harder doorgaan meestal niet
+                de oplossing.
               </p>
-              <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed mb-10">
-                We brengen je aandacht uit je hoofd en terug naar je lichaam. Met gesprekken,
-                ademhaling, lichaamsgerichte oefeningen en HeartMath met HRV-biofeedback ontdek
-                je wat voor jou werkt. Zo ontstaat ruimte voor meer rust, meer helderheid, meer
-                vertrouwen, meer energie en meer regie.
-              </p>
-              <Link to="/kennismakingsgesprek" className="button-nav">
-                Plan een kennismakingsgesprek
-              </Link>
             </div>
 
           </div>
@@ -312,58 +264,70 @@ export default function Home() {
       </section>
 
       {/* ── Services ─────────────────────────────────────────────────────── */}
-      <section className="services-section py-20 md:py-32 bg-botanical-bg">
+      {/* ── Van spanning naar veerkracht — foto 4 ────────────────────────── */}
+      <section className="services-section py-20 md:py-28 bg-botanical-bg">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-
-          {/* Heading */}
-          <div className="text-center mb-16 md:mb-20 fade-up">
-            <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-4">Waar ik mee kan helpen</p>
-            <h2 className="font-serif text-3xl md:text-5xl font-bold text-botanical-fg leading-tight">
-              Mijn <em className="italic">diensten</em>
-            </h2>
-          </div>
-
-          {/*! Look at the cards grid staggered, I fixed the clippath of the white backgrounmd, but now the box shadow is broken. */}
-
-          {/* Cards grid — staggered */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {services.map((service) => (
-              /* Outer div: shadow only — no clip-path, so drop-shadow follows the arch shape */
-              <div
-                key={service.to}
-                className={`[filter:drop-shadow(0_10px_15px_rgba(45,58,49,0.07))] hover:[filter:drop-shadow(0_25px_50px_rgba(45,58,49,0.15))] hover:-translate-y-2 transition-all duration-500 ${service.offset ? 'md:mt-10 lg:mt-16' : ''}`}
-              >
-                <Link
-                  to={service.to}
-                  style={{ clipPath: 'inset(0 round 100px 100px 0 0)', overflow: 'hidden' }}
-                  className="service-card group flex flex-col rounded-3xl bg-white block"
-                >
-                  {/* Arch image */}
-                  <div style={{ clipPath: 'inset(0 round 100px 100px 0 0)' }}>
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full aspect-[4/5] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6 flex flex-col flex-1">
-                    <h3 className="font-serif text-xl font-bold text-botanical-fg mb-2 group-hover:text-botanical-sage transition-colors duration-300">
-                      {service.title}
-                    </h3>
-                    <p className="font-serif italic text-sm text-botanical-terra mb-3">{service.subtitle}</p>
-                    <p className="font-sans text-sm text-botanical-fg/65 leading-relaxed mb-4 flex-1">{service.description}</p>
-                    <span className="font-sans text-xs tracking-widest uppercase text-botanical-sage inline-flex items-center gap-1 group-hover:gap-2 transition-all duration-300">
-                      Meer lezen
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="group-hover:translate-x-1 transition-transform duration-300">
-                        <path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                  </div>
-                </Link>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="fade-up overflow-hidden rounded-[40px] shadow-botanical-lg group order-2 md:order-1">
+              <img src={AanpakPhoto} alt="" className="w-full aspect-[4/5] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
+            </div>
+            <div className="space-y-5 fade-up order-1 md:order-2">
+              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold">De aanpak</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-botanical-fg leading-tight">
+                Van spanning naar <em className="italic">veerkracht</em>
+              </h2>
+              <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
+                In mijn coaching leer je niet alleen begrijpen wat er met je gebeurt. Je leert
+                vooral ervaren hoe je zelf invloed kunt krijgen op spanning, emoties en je
+                reacties daarop.
+              </p>
+              <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
+                We brengen je aandacht uit je hoofd en terug naar je lichaam. Met gesprekken,
+                ademhaling, lichaamsgerichte oefeningen en HeartMath met HRV-biofeedback ontdek je
+                wat voor jou werkt. Zo ontstaat ruimte voor:
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {ruimteVoor.map((item) => (
+                  <span key={item} className="font-serif text-lg text-botanical-sage bg-white border border-botanical-stone rounded-full px-4 py-1">
+                    {item}
+                  </span>
+                ))}
               </div>
-            ))}
+              <blockquote className="botanical-pullquote">
+                "Het doel is niet dat je nooit meer spanning ervaart. Het doel is dat je weet wat
+                je kunt doen wanneer spanning er wél is."
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Persoonlijke begeleiding — foto 5 ─────────────────────────────── */}
+      <section className="services-section py-20 md:py-28 bg-botanical-card">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="space-y-5 fade-up">
+              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold">Persoonlijk</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-botanical-fg leading-tight">
+                Begeleiding die bij <em className="italic">jou</em> begint
+              </h2>
+              <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
+                Iedereen reageert anders op spanning. Daarom kijken we niet alleen naar je
+                klachten, maar naar jou. Wat speelt er? Welke patronen herken je? Wat vertelt je
+                lichaam? Wat heb jij nodig?
+              </p>
+              <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
+                Ik stuur op het proces, maar niet op de inhoud. Door vragen te stellen, te laten
+                ervaren en soms juist even ruimte te geven, help ik je ontdekken wat voor jou
+                werkt.
+              </p>
+              <div className="pt-2">
+                <Link to="/mijn-aanbod" className="button-nav">Bekijk mijn aanbod</Link>
+              </div>
+            </div>
+            <div className="fade-up overflow-hidden rounded-[40px] shadow-botanical-lg group">
+              <img src={PersoonlijkPhoto} alt="" className="w-full aspect-[4/5] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
+            </div>
           </div>
         </div>
       </section>
@@ -423,10 +387,10 @@ export default function Home() {
               <div
                 key={i}
                 onClick={t.quote.length > 120 ? () => setModal(t) : undefined}
-                className={`group w-80 min-h-[280px] bg-white rounded-3xl p-7 shadow-botanical-md flex flex-col shrink-0 ${t.quote.length > 120 ? 'cursor-pointer hover:shadow-botanical-lg transition-shadow duration-300' : ''}`}
+                className={`group w-80 min-h-[300px] bg-white rounded-3xl p-7 shadow-botanical-md flex flex-col shrink-0 ${t.quote.length > 120 ? 'cursor-pointer hover:shadow-botanical-lg transition-shadow duration-300' : ''}`}
               >
                 <div className="font-serif text-5xl text-botanical-clay/50 leading-none mb-3 select-none">"</div>
-                <p className="font-serif italic text-sm text-botanical-fg leading-relaxed flex-1 mb-4 line-clamp-4">
+                <p className="font-sans text-base text-botanical-fg/85 leading-relaxed flex-1 mb-4 line-clamp-5">
                   {t.quote}
                 </p>
                 <div className="mt-auto">
@@ -471,7 +435,7 @@ export default function Home() {
               </svg>
             </button>
             <div className="font-serif text-5xl text-botanical-clay/50 leading-none mb-4 select-none">"</div>
-            <p className="font-serif italic text-base text-botanical-fg leading-relaxed mb-8">{modal.quote}</p>
+            <p className="font-sans text-base md:text-lg text-botanical-fg/85 leading-relaxed mb-8">{modal.quote}</p>
             <div className="flex items-center justify-between">
               <p className="font-sans text-sm font-semibold text-botanical-fg">{modal.name}</p>
               <span className="font-sans text-xs text-botanical-sage bg-botanical-card px-3 py-1 rounded-full">{modal.service}</span>
@@ -494,7 +458,7 @@ export default function Home() {
             willen en of mijn manier van werken bij je past.
           </p>
           <Link
-            to="/kennismakingsgesprek"
+            to="/contact"
             className="inline-flex items-center justify-center bg-botanical-sage text-white rounded-full px-8 py-4 font-sans text-sm tracking-widest uppercase font-semibold hover:bg-white hover:text-botanical-fg transition-all duration-300 shadow-botanical-xl"
           >
             Kennismakingsgesprek plannen

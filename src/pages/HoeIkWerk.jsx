@@ -202,7 +202,7 @@ export default function HoeIkWerk() {
             <h2 className="font-serif text-3xl md:text-4xl font-bold text-botanical-fg leading-tight mb-8">
               Wil je ervaren of mijn manier van werken bij je <em className="italic">past</em>?
             </h2>
-            <Link to="/kennismakingsgesprek" className="button-nav">
+            <Link to="/contact" className="button-nav">
               Plan een vrijblijvend kennismakingsgesprek
             </Link>
           </div>

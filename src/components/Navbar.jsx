@@ -35,18 +35,11 @@ export default function Navbar() {
         : 'text-botanical-fg hover:text-botanical-sage'
     }`;
 
-  const services = [
-    { to: '/stressmanagement', label: 'Stressmanagement' },
-    { to: '/ademwerk', label: 'Ademwerk' },
-    { to: '/coaching', label: 'Coaching' },
-    { to: '/angst-voor-honden', label: 'Angst voor honden' },
-  ];
-
   const pages = [
     { to: '/', label: 'Home', exact: true },
+    { to: '/mijn-aanbod', label: 'Mijn aanbod' },
     { to: '/hoe-ik-werk', label: 'Hoe ik werk' },
     { to: '/over-mij', label: 'Over mij' },
-    { to: '/tarieven', label: 'Tarieven' },
     { to: '/contact', label: 'Contact' },
   ];
 
@@ -60,7 +53,7 @@ export default function Navbar() {
             : 'bg-botanical-bg shadow-botanical-sm'
         }`}
       >
-        <div className="max-w-[88rem] mx-auto px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
 
             {/* Logo */}
@@ -72,7 +65,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop nav links */}
-            <div className="hidden 2xl:flex items-center gap-x-5 ml-10 mr-6">
+            <div className="hidden xl:flex items-center gap-x-6 ml-10 mr-6">
               {pages.map(({ to, label, exact }) => (
                 <NavLink
                   key={to}
@@ -83,18 +76,12 @@ export default function Navbar() {
                   {label}
                 </NavLink>
               ))}
-              <div className="w-px h-4 bg-botanical-stone" />
-              {services.map(({ to, label }) => (
-                <NavLink key={to} to={to} className={navLinkClass}>
-                  {label}
-                </NavLink>
-              ))}
             </div>
 
             {/* CTA + Hamburger */}
             <div className="flex items-center gap-4 shrink-0">
               <Link
-                to="/kennismakingsgesprek"
+                to="/contact"
                 className="hidden md:inline-flex button-nav"
               >
                 Kennismakingsgesprek
@@ -104,7 +91,7 @@ export default function Navbar() {
               <button
                 onClick={toggleNavbar}
                 aria-label="Menu openen"
-                className="2xl:hidden flex flex-col justify-center items-center w-11 h-11 gap-1.5 rounded-full hover:bg-botanical-card transition-colors duration-300"
+                className="xl:hidden flex flex-col justify-center items-center w-11 h-11 gap-1.5 rounded-full hover:bg-botanical-card transition-colors duration-300"
               >
                 <span
                   className={`block w-5 h-px bg-botanical-fg transition-all duration-300 ${
@@ -170,26 +157,9 @@ export default function Navbar() {
               ))}
             </div>
 
-            <div className="flex flex-col gap-1 mb-10">
-              <p className="font-serif italic text-xs text-botanical-sage tracking-widest uppercase mb-3">Diensten</p>
-              {services.map(({ to, label }) => (
-                <NavLink
-                  key={to}
-                  to={to}
-                  onClick={closeNavbar}
-                  className={({ isActive }) =>
-                    `font-sans text-lg py-3 border-b border-botanical-stone transition-colors duration-300 ${
-                      isActive ? 'text-botanical-sage' : 'text-botanical-fg hover:text-botanical-sage'
-                    }`
-                  }
-                >
-                  {label}
-                </NavLink>
-              ))}
-            </div>
 
             <Link
-              to="/kennismakingsgesprek"
+              to="/contact"
               onClick={closeNavbar}
               className="button-nav text-center"
             >
