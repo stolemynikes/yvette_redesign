@@ -20,7 +20,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #2C6975;
+    background-color: #2F6366;
     color: #fff;
     border: none;
     border-radius: 9999px;
@@ -33,13 +33,13 @@
     text-decoration: none;
     cursor: pointer;
     transition: background-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
-    box-shadow: 0 4px 6px -1px rgba(44, 58, 62, 0.12);
+    box-shadow: 0 4px 6px -1px rgba(70, 81, 90, 0.12);
     white-space: nowrap;
 
     &:hover {
-        background-color: #21555F;
+        background-color: #244E51;
         transform: translateY(-2px);
-        box-shadow: 0 10px 20px -6px rgba(31, 78, 87, 0.4);
+        box-shadow: 0 10px 20px -6px rgba(36, 78, 81, 0.4);
         color: #fff;
     }
 
@@ -66,8 +66,8 @@
     align-items: center;
     justify-content: center;
     background: transparent;
-    color: #2C6975;
-    border: 1px solid #2C6975;
+    color: #2F6366;
+    border: 1px solid #2F6366;
     border-radius: 9999px;
     padding: 0.75rem 1.75rem;
     font-family: 'Lato', sans-serif;
@@ -80,7 +80,7 @@
     text-decoration: none;
 
     &:hover {
-        background-color: #2C6975;
+        background-color: #2F6366;
         color: #fff;
         transform: translateY(-1px);
     }
@@ -110,7 +110,7 @@
         left: 0;
         right: 0;
         padding: 2rem 5%;
-        background: linear-gradient(to top, rgba(44, 58, 62, 0.5) 0%, transparent 100%);
+        background: linear-gradient(to top, rgba(70, 81, 90, 0.5) 0%, transparent 100%);
         display: flex;
         justify-content: center;
         align-items: flex-end;
@@ -126,7 +126,7 @@
             overflow-wrap: break-word;
             word-break: break-word;
             max-width: 760px;
-            background: rgba(44, 58, 62, 0.45);
+            background: rgba(70, 81, 90, 0.45);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -218,9 +218,9 @@
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-style: italic;
     font-size: clamp(1.25rem, 2vw, 1.625rem);
-    color: #2C6975;
+    color: #2F6366;
     line-height: 1.5;
-    border-left: 2px solid #8FA6AE;
+    border-left: 2px solid #3F8588;
     padding-left: 1.5rem;
     margin: 2rem 0;
 }

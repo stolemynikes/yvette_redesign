@@ -6,20 +6,21 @@
 
 :root {
   /* Botanical Design Tokens */
-  --botanical-bg: #F2F3F2;
-  --botanical-fg: #394348;
-  --botanical-sage: #2C6975;
-  --botanical-stone: #8FA6AE;
-  --botanical-terra: #B58C99;
-  --botanical-clay: #8FA6AE;
-  --botanical-card: #FAFAF8;
+  --botanical-bg: #F8F7F4;
+  --botanical-fg: #46515A;
+  --botanical-sage: #2F6366;
+  --botanical-teal: #3F8588;
+  --botanical-stone: #71838B;
+  --botanical-terra: #7A5050;
+  --botanical-clay: #D8D6D1;
+  --botanical-card: #D8D6D1;
 
   /* Legacy tokens (kept for SCSS compat during migration) */
-  --primary: #2C6975;
-  --primary-accent: #FAFAF8;
-  --secondary: #F2F3F2;
-  --btncolor: #2C6975;
-  --green: #FAFAF8;
+  --primary: #2F6366;
+  --primary-accent: #D8D6D1;
+  --secondary: #F8F7F4;
+  --btncolor: #2F6366;
+  --green: #D8D6D1;
 
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Lato', system-ui, sans-serif;
