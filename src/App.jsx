@@ -11,6 +11,7 @@ import OverMij from './pages/OverMij'
 import Contact from './pages/Contact'
 import HoeIkWerk from './pages/HoeIkWerk'
 import MijnAanbod from './pages/MijnAanbod'
+import OverigAanbod from './pages/OverigAanbod'
 
 
 //router
@@ -64,13 +65,13 @@ function App() {
             <Route path="/" exact element={<Home/>}/>\
             <Route path="/*" exact element={<Navigate to='/'/>}/>
             <Route path='/mijn-aanbod' exact element={<MijnAanbod/>}/>
+            <Route path='/overig-aanbod' exact element={<OverigAanbod/>}/>
 
             {/* Oude adressen blijven werken voor links die al gedeeld zijn */}
             <Route path='/tarieven' exact element={<Navigate to='/mijn-aanbod' replace/>}/>
             <Route path='/stressmanagement' exact element={<Navigate to='/mijn-aanbod' replace/>}/>
             <Route path='/ademwerk' exact element={<Navigate to='/mijn-aanbod' replace/>}/>
             <Route path='/coaching' exact element={<Navigate to='/mijn-aanbod' replace/>}/>
-            <Route path='/angst-voor-honden' exact element={<Navigate to='/mijn-aanbod' replace/>}/>
             <Route path='/kennismakingsgesprek' exact element={<Navigate to='/contact' replace/>}/>
             <Route path='/nieuwsbrief' exact element={<Navigate to='/contact' replace/>}/>
             <Route path='/hoe-ik-werk' exact element={<HoeIkWerk/>}/>

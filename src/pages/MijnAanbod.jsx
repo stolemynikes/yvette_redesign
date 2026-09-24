@@ -187,7 +187,7 @@ export default function MijnAanbod() {
               Van spanning naar <em className="italic">veerkracht</em>
             </h2>
           </div>
-          <div className="fade-up inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-8 bg-white rounded-3xl px-8 py-7 shadow-botanical-md max-w-full">
+          <div className="fade-up flex w-full sm:inline-flex sm:w-auto flex-col sm:flex-row items-center gap-5 sm:gap-8 bg-white rounded-3xl px-6 sm:px-8 py-7 shadow-botanical-md">
             <div>
               <p className="font-serif text-4xl font-bold text-botanical-fg leading-none">€ 835,-</p>
               <p className="font-sans text-sm text-botanical-fg/65 mt-2">7 sessies</p>

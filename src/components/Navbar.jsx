@@ -38,6 +38,7 @@ export default function Navbar() {
   const pages = [
     { to: '/', label: 'Home', exact: true },
     { to: '/mijn-aanbod', label: 'Mijn aanbod' },
+    { to: '/overig-aanbod', label: 'Overig aanbod' },
     { to: '/hoe-ik-werk', label: 'Hoe ik werk' },
     { to: '/over-mij', label: 'Over mij' },
     { to: '/contact', label: 'Contact' },

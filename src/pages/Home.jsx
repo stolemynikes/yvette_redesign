@@ -131,7 +131,7 @@ export default function Home() {
       >
         {/* Decorative background blob */}
         <div
-          className="hidden lg:block absolute right-0 top-0 w-1/2 h-[115%] bg-botanical-stone/25 pointer-events-none"
+          className="absolute right-0 top-0 w-full h-[calc(50%+40px)] lg:w-1/2 lg:h-[115%] bg-botanical-stone/25 pointer-events-none"
           style={{ borderRadius: '0 0 0 60% / 0 0 0 40%' }}
         />
 
