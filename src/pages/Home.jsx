@@ -274,10 +274,10 @@ export default function Home() {
       <section className="services-section py-20 md:py-28 bg-botanical-bg">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div className="fade-up overflow-hidden rounded-[40px] shadow-botanical-lg group order-2 md:order-1">
+            <div className="fade-up overflow-hidden rounded-[40px] shadow-botanical-lg group order-2">
               <img src={AanpakPhoto} alt="" className="w-full aspect-[4/5] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
             </div>
-            <div className="space-y-5 fade-up order-1 md:order-2">
+            <div className="space-y-5 fade-up order-1">
               <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold">De aanpak</p>
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-botanical-fg leading-tight">
                 Van spanning naar <em className="italic">veerkracht</em>
@@ -292,13 +292,14 @@ export default function Home() {
                 ademhaling, lichaamsgerichte oefeningen en HeartMath met HRV-biofeedback ontdek je
                 wat voor jou werkt. Zo ontstaat ruimte voor:
               </p>
-              <div className="flex flex-wrap gap-2">
+              <ul className="space-y-3">
                 {ruimteVoor.map((item) => (
-                  <span key={item} className="font-serif text-lg text-botanical-sage bg-white border border-botanical-stone rounded-full px-4 py-1">
-                    {item}
-                  </span>
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-3 h-0.5 w-4 bg-botanical-terra shrink-0" />
+                    <span className="font-sans text-base text-botanical-fg/75 leading-relaxed">{item}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
               <blockquote className="botanical-pullquote">
                 "Het doel is niet dat je nooit meer spanning ervaart. Het doel is dat je weet wat
                 je kunt doen wanneer spanning er wél is."
@@ -312,7 +313,7 @@ export default function Home() {
       <section className="services-section py-20 md:py-28 bg-botanical-card">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div className="space-y-5 fade-up">
+            <div className="space-y-5 fade-up order-1 md:order-2">
               <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold">Persoonlijk</p>
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-botanical-fg leading-tight">
                 Begeleiding die bij <em className="italic">jou</em> begint
@@ -337,7 +338,7 @@ export default function Home() {
                 <Link to="/mijn-aanbod" className="button-nav">Bekijk mijn aanbod</Link>
               </div>
             </div>
-            <div className="fade-up overflow-hidden rounded-[40px] shadow-botanical-lg group">
+            <div className="fade-up overflow-hidden rounded-[40px] shadow-botanical-lg group order-2 md:order-1">
               <img src={PersoonlijkPhoto} alt="" className="w-full aspect-[4/5] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
             </div>
           </div>
