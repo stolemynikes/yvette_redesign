@@ -1,31 +1,75 @@
-import React, { useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Foto's — nummering volgt de fotolijst in Homepage_DEF
-import Banner from '../assets/images/Stressmanagement/Foto1.jpg';          // 1. hero
+// Images
+import Banner from '../assets/images/homepage/banner.jpg';
+import PersoonlijkPhoto from '../assets/images/homepage/Foto1.jpg';       // 5. Persoonlijke begeleiding
 import UitvallenPhoto from '../assets/images/Stressmanagement/Foto2.jpg';  // 2. Je hoeft niet eerst uit te vallen
 import AanpakPhoto from '../assets/images/Adem/Foto1.jpg';                 // 4. Van spanning naar veerkracht
-import PersoonlijkPhoto from '../assets/images/Contact/Banner2.jpg';       // 5. Persoonlijke begeleiding
 
-const signalen = [
-  'je hoofd staat voortdurend aan;',
-  'je piekert en kunt moeilijk loslaten;',
-  'je hebt het gevoel dat je achter de feiten aanloopt;',
-  'je bent snel geïrriteerd, emotioneel of overprikkeld;',
-  'je hebt steeds minder energie;',
-  'ontspannen lukt niet meer vanzelf;',
-  'je probeert vooral door te gaan, terwijl dat steeds moeilijker wordt.',
-];
+// ─── Data ──────────────────────────────────────────────────────────────────
 
 const ruimteVoor = ['meer rust', 'meer helderheid', 'meer vertrouwen', 'meer energie', 'meer regie'];
 
+const testimonials = [
+  // Stressmanagement
+  { quote: 'Ik merkte al enige tijd dat ik vermoeid was, mijzelf niet meer kon opladen en achter mijn ademhaling aanliep. Het coachtraject bij Yvette sloot aan bij mijn verwachtingen en heeft deze zelfs overtroffen. Belangrijkste resultaat is dat ik meer rust ervaar en aanvoel wanneer er stress of een energielek ontstaat en er nu wat aan kan doen.', name: 'J.V.', service: 'Stressmanagement' },
+  { quote: 'Ik voelde mij heel veilig bij Yvette. Ze weet een goede balans te vinden tussen de techniek van deze methode en ook intuïtief de sessies in te steken. Voor mij was het een groot winstpunt dat ik mij minder laat meeslepen in emoties. De dingen meer van een afstand bekijk en bewuster kies.', name: 'M.G.', service: 'Stressmanagement' },
+  { quote: 'Yvette is rustig, integer, ontspannen en duidelijk. Ze luistert en begrijpt je. Ze stelt de juiste vragen waardoor je meer gaat nadenken en voelen. Ik luister nu meer naar mijn lichaam. Slaap beter en knars bijna niet meer. Overdag voel ik mij rustiger en meer ontspannen.', name: 'P.v.B.', service: 'Stressmanagement' },
+  { quote: 'Aanrader! Yvette helpt je controle te krijgen over jezelf.', name: 'S.P.', service: 'Stressmanagement' },
+  // Coaching
+  { quote: 'Ik heb de sessie ervaren als helder en met rust. Ik had het gevoel dat ik serieus genomen werd en dat ik de ruimte kreeg om na te denken en te voelen. Fred is lekker duidelijk een warme zachte spiegel.', name: 'E.', service: 'Coaching' },
+  { quote: 'De ruimte die Yvette biedt binnen de aangegeven grenzen om in te spelen, vind ik echt een bijzonder recept van kwaliteiten. Ik dacht dat het gevoel van vrijheid betekent alle vrijheid geven aan de ander. Terwijl er dus ook vrijheid gevoeld kan worden binnen grenzen.', name: 'R.J.', service: 'Coaching' },
+  { quote: 'Vond de sessie in 1 woord geweldig. Veel geleerd. Ben nu druk aan de slag met verder ontwikkelen en ga een cursus doen voor meer verdieping.', name: 'G.', service: 'Coaching' },
+  { quote: 'De begeleiding is goed. Ik voelde mij veilig en totaal gehoord. De volledige aandacht was op mij. Fred\'s aanwezigheid was heel fijn — hij laat heel duidelijk de situatie zien. Je begrijpt mij. Je voelt mij. Je herkent mij.', name: 'A.W.', service: 'Coaching' },
+  // Ademwerk
+  { quote: 'Ik heb ons contact als heel fijn en rustig ervaren en inzicht in ademwerk gekregen. Ik neem een mooie nieuwe ervaring mee en een gezonder lijf. Dank voor je sessies, dank voor je vertrouwen en dank voor alle info en ervaring!', name: 'A.W.', service: 'Ademwerk' },
+  { quote: 'Yvette, bedankt voor een heerlijke ademsessie. We zijn nu een paar uur verder en ik voel me echt heel lekker. Mijn hart blijft maar open gaan. Je hebt een groot talent om mensen te begrijpen en te begeleiden.', name: 'A.S.', service: 'Ademwerk' },
+  { quote: 'Jouw adem-coaching heeft mij geholpen mijn hoofd en lichaam te laten ontspannen door enkel mijn manier van ademen bewust te veranderen. In 4 sessies heb ik geleerd wat "beter ademen" mij brengt.', name: 'M.L.', service: 'Ademwerk' },
+  // Angst voor honden
+  { quote: 'Yvette heeft heel geduldig het proces opgebouwd en een band ontwikkeld waardoor W. zich veilig voelde. Ze is een fijne persoonlijkheid en we zijn erg te spreken over hoe ze dit heeft aangepakt. Het behaalde resultaat mag er zijn!', name: 'E. en M. v.W.', service: 'Angst voor honden' },
+  { quote: 'Ik vond het samenwerken heel leuk en ook met Fred. Op het strand vond ik het op het begin nog een beetje spannend, maar daarna niet meer.', name: 'J.', service: 'Angst voor honden' },
+  { quote: 'Super bedankt voor je begeleiding. J. heeft echt stappen gemaakt dankzij jou en Fred.', name: 'S.v.H.', service: 'Angst voor honden' },
+];
+
+const signals = [
+  'je hoofd staat voortdurend aan',
+  'je piekert en kunt moeilijk loslaten',
+  'je hebt het gevoel dat je achter de feiten aanloopt',
+  'je bent snel geïrriteerd, emotioneel of overprikkeld',
+  'je hebt steeds minder energie',
+  'ontspannen lukt niet meer vanzelf',
+  'je probeert vooral door te gaan, terwijl dat steeds moeilijker wordt',
+];
+
+// ─── Component ─────────────────────────────────────────────────────────────
+
 export default function Home() {
+  const heroRef = useRef(null);
+
+  // Modal state
+  const [modal, setModal] = useState(null);
+  const [modalClosing, setModalClosing] = useState(false);
+  const [marquePaused, setMarquePaused] = useState(false);
+
+  function closeModal() {
+    setModalClosing(true);
+    setTimeout(() => { setModal(null); setModalClosing(false); }, 300);
+  }
+
+  useEffect(() => {
+    document.body.style.overflow = modal ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [modal]);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Hero animation
       gsap.from('.hero-text > *', {
         opacity: 0,
         y: 30,
@@ -42,16 +86,35 @@ export default function Home() {
         delay: 0.4,
       });
 
-      // Alleen y animeren, geen opacity: met opacity: 0 in een from-tween
-      // blijft een sectie onzichtbaar als de trigger nooit afgaat.
-      document.querySelectorAll('.home-section').forEach((section) => {
-        gsap.from(section.querySelectorAll('.fade-up'), {
-          scrollTrigger: { trigger: section, start: 'top 80%', once: true },
+      // Scroll-triggered sections — only animate y, NOT opacity
+      // (opacity:0 in gsap.from causes permanent invisibility if trigger never fires)
+      const sections = ['.intro-section', '.cta-section', '.services-section', '.testimonials-section'];
+      sections.forEach((sel) => {
+        gsap.from(`${sel} .fade-up`, {
+          scrollTrigger: { trigger: sel, start: 'top 85%', once: true },
           y: 30,
           stagger: 0.1,
           duration: 0.7,
           ease: 'power3.out',
         });
+      });
+
+      // Service cards stagger
+      gsap.from('.service-card', {
+        scrollTrigger: { trigger: '.services-section', start: 'top 85%', once: true },
+        y: 40,
+        stagger: 0.12,
+        duration: 0.8,
+        ease: 'power3.out',
+      });
+
+      // Testimonial cards
+      gsap.from('.testimonial-card', {
+        scrollTrigger: { trigger: '.testimonials-section', start: 'top 85%', once: true },
+        y: 30,
+        stagger: 0.1,
+        duration: 0.7,
+        ease: 'power3.out',
       });
     });
 
@@ -61,8 +124,12 @@ export default function Home() {
   return (
     <div className="bg-botanical-bg min-h-screen">
 
-      {/* ── Hero — foto 1 ──────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden flex items-center py-16 md:py-24">
+      {/* ── Hero ─────────────────────────────────────────────────────────── */}
+      <section
+        ref={heroRef}
+        className="relative min-h-[90vh] flex items-center py-16 md:py-24"
+      >
+        {/* Decorative background blob */}
         <div
           className="absolute right-0 top-0 w-full h-[calc(50%+40px)] lg:w-1/2 lg:h-[115%] bg-botanical-teal/25 pointer-events-none"
           style={{ borderRadius: '0 0 0 60% / 0 0 0 40%' }}
@@ -71,20 +138,39 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
+            {/* Text */}
             <div className="hero-text order-2 lg:order-1">
+              <span className="inline-block font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-6 fade-up">
+                Stresscoach | Ademcoach | HeartMath coach
+              </span>
               <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-botanical-fg mb-6">
-                Van spanning naar <em className="italic text-botanical-sage">veerkracht</em>
+                Van spanning naar{' '}
+                <em className="italic text-botanical-sage">veerkracht</em>
               </h1>
-              <p className="font-serif text-2xl md:text-3xl text-botanical-fg leading-relaxed">
+              <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed mb-10 max-w-lg">
                 Meer rust in je hoofd. Meer energie. Meer regie over je leven.
               </p>
+              <div className="flex flex-wrap gap-4 items-center">
+                <Link to="/contact" className="button-nav">
+                  Kennismakingsgesprek
+                </Link>
+                <Link
+                  to="/over-mij"
+                  className="font-sans text-sm tracking-wide text-botanical-fg/60 hover:text-botanical-sage transition-colors duration-300 underline underline-offset-4"
+                >
+                  Over Yvette →
+                </Link>
+              </div>
             </div>
 
+            {/* Arch Image */}
             <div className="hero-image order-1 lg:order-2 flex justify-center lg:justify-end">
+              {/* Outer: shadow + border-radius for shadow shape */}
               <div
                 className="relative w-64 sm:w-80 lg:w-[380px] xl:w-[420px] shadow-botanical-xl"
                 style={{ borderRadius: '200px 200px 40px 40px' }}
               >
+                {/* Inner: clip-path always clips, even during hover scale */}
                 <div style={{ clipPath: 'inset(0 round 200px 200px 40px 40px)' }}>
                   <img
                     src={Banner}
@@ -97,39 +183,58 @@ export default function Home() {
 
           </div>
         </div>
+
       </section>
 
-      {/* ── Je hoofd staat niet stil ───────────────────────────────────────── */}
-      <section className="home-section py-20 md:py-28 bg-botanical-bg">
+      {/* ── Intro Text ───────────────────────────────────────────────────── */}
+      <section className="intro-section py-20 md:py-28 bg-botanical-bg">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <p className="font-serif text-2xl md:text-3xl text-botanical-fg leading-relaxed fade-up">
-            Je hoofd staat niet stil.
-          </p>
-          <div className="space-y-5 mt-6 fade-up">
-            <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
+          <div className="fade-up">
+            <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-6">Je hoeft niet eerst uit te vallen</p>
+          </div>
+          <div className="space-y-5 fade-up">
+            <p className="font-serif text-2xl md:text-3xl text-botanical-fg leading-relaxed">
+              Je hoofd staat niet stil.
+            </p>
+            <p className="font-sans text-lg text-botanical-fg/70 leading-relaxed">
               Je denkt aan alles wat nog moet, wat niet af is en wat beter moet. Je probeert
               overzicht te houden, gaat door en houdt zoveel mogelijk onder controle.
             </p>
-            <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
+            <p className="font-sans text-lg text-botanical-fg/70 leading-relaxed">
               Maar ondertussen merk je dat het steeds meer moeite kost.
             </p>
-            <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
-              Je bent sneller gespannen of overprikkeld, slaapt minder goed, hebt minder energie of
-              merkt dat je niet meer kunt ontspannen zoals je gewend was.
+            <p className="font-sans text-lg text-botanical-fg/70 leading-relaxed">
+              Je bent sneller gespannen of overprikkeld, slaapt minder goed, hebt minder energie
+              of merkt dat je niet meer kunt ontspannen zoals je gewend was.
             </p>
           </div>
-          <p className="font-serif text-2xl md:text-3xl text-botanical-fg leading-relaxed mt-8 fade-up">
-            Aan de buitenkant gaat het misschien nog prima.{' '}
-            <em className="italic text-botanical-sage">Vanbinnen voelt het steeds zwaarder.</em>
-          </p>
-          <div className="mt-10 fade-up">
+
+          <div className="mt-12 fade-up">
+            <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-6">Misschien herken je jezelf hierin</p>
+            <ul className="grid sm:grid-cols-2 gap-x-10 gap-y-3 text-left max-w-2xl mx-auto">
+              {signals.map((signal) => (
+                <li key={signal} className="flex items-start gap-3">
+                  <span className="mt-3 h-0.5 w-4 bg-botanical-terra shrink-0" />
+                  <span className="font-sans text-base text-botanical-fg/70 leading-relaxed">{signal}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mt-12 space-y-5 fade-up">
+            <p className="font-serif text-2xl md:text-3xl text-botanical-fg leading-relaxed">
+              Aan de buitenkant gaat het misschien nog prima.
+              <em className="italic text-botanical-sage"> Vanbinnen voelt het steeds zwaarder.</em>
+            </p>
+          </div>
+          <div className="mt-8 fade-up">
             <div className="w-16 h-px bg-botanical-terra mx-auto" />
           </div>
         </div>
       </section>
 
-      {/* ── Je hoeft niet eerst uit te vallen — foto 2 ─────────────────────── */}
-      <section className="home-section py-20 md:py-28 bg-botanical-card">
+      {/* ── Je hoeft niet eerst uit te vallen — foto 2 ───────────────────── */}
+      <section className="cta-section py-16 md:py-24 bg-botanical-card">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
 
@@ -141,21 +246,11 @@ export default function Home() {
               />
             </div>
 
-            <div className="space-y-5 fade-up">
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-botanical-fg leading-tight">
+            <div className="fade-up space-y-5">
+              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold">Herkenbaar?</p>
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-botanical-fg leading-tight">
                 Je hoeft niet eerst <em className="italic">uit te vallen</em>
               </h2>
-              <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
-                Misschien herken je jezelf hierin:
-              </p>
-              <ul className="space-y-2.5">
-                {signalen.map((signaal) => (
-                  <li key={signaal} className="flex items-start gap-3">
-                    <span className="mt-3 h-0.5 w-4 bg-botanical-terra shrink-0" />
-                    <span className="font-sans text-base text-botanical-fg/75 leading-relaxed">{signaal}</span>
-                  </li>
-                ))}
-              </ul>
               <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">Misschien denk je:</p>
               <blockquote className="botanical-pullquote">
                 "Waarom lukt het me allemaal niet meer zoals vroeger?"
@@ -165,8 +260,8 @@ export default function Home() {
                 "Ik moet me gewoon wat beter organiseren en nog even volhouden."
               </blockquote>
               <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
-                Maar als je al langere tijd over je grenzen gaat, is harder doorgaan meestal niet de
-                oplossing.
+                Maar als je al langere tijd over je grenzen gaat, is harder doorgaan meestal niet
+                de oplossing.
               </p>
             </div>
 
@@ -174,118 +269,213 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Van spanning naar veerkracht — foto 4 ──────────────────────────── */}
-      <section className="home-section py-20 md:py-28 bg-botanical-bg">
+      {/* ── Services ─────────────────────────────────────────────────────── */}
+      {/* ── Van spanning naar veerkracht — foto 4 ────────────────────────── */}
+      <section className="services-section py-20 md:py-28 bg-botanical-bg">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
-
-            <div className="space-y-5 fade-up">
+            <div className="fade-up overflow-hidden rounded-[40px] shadow-botanical-lg group order-2 md:order-1">
+              <img src={AanpakPhoto} alt="" className="w-full aspect-[4/5] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
+            </div>
+            <div className="space-y-5 fade-up order-1 md:order-2">
+              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold">De aanpak</p>
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-botanical-fg leading-tight">
                 Van spanning naar <em className="italic">veerkracht</em>
               </h2>
               <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
                 In mijn coaching leer je niet alleen begrijpen wat er met je gebeurt. Je leert
-                vooral ervaren hoe je zelf invloed kunt krijgen op spanning, emoties en je reacties
-                daarop.
+                vooral ervaren hoe je zelf invloed kunt krijgen op spanning, emoties en je
+                reacties daarop.
               </p>
               <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
                 We brengen je aandacht uit je hoofd en terug naar je lichaam. Met gesprekken,
                 ademhaling, lichaamsgerichte oefeningen en HeartMath met HRV-biofeedback ontdek je
-                wat voor jou werkt.
+                wat voor jou werkt. Zo ontstaat ruimte voor:
               </p>
-              <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">Zo ontstaat ruimte voor:</p>
               <div className="flex flex-wrap gap-2">
                 {ruimteVoor.map((item) => (
-                  <span
-                    key={item}
-                    className="font-serif text-lg text-botanical-sage bg-botanical-bg border border-botanical-stone rounded-full px-4 py-1"
-                  >
+                  <span key={item} className="font-serif text-lg text-botanical-sage bg-white border border-botanical-stone rounded-full px-4 py-1">
                     {item}
                   </span>
                 ))}
               </div>
-              <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
-                Het doel is niet dat je nooit meer spanning ervaart.
-              </p>
-              <p className="font-serif text-2xl text-botanical-fg leading-relaxed">
-                Het doel is dat je weet wat je kunt doen wanneer spanning er{' '}
-                <em className="italic text-botanical-sage">wél</em> is.
-              </p>
+              <blockquote className="botanical-pullquote">
+                "Het doel is niet dat je nooit meer spanning ervaart. Het doel is dat je weet wat
+                je kunt doen wanneer spanning er wél is."
+              </blockquote>
             </div>
-
-            <div className="fade-up overflow-hidden rounded-[40px] shadow-botanical-lg group">
-              <img
-                src={AanpakPhoto}
-                alt=""
-                className="w-full aspect-[4/5] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-              />
-            </div>
-
           </div>
         </div>
       </section>
 
-      {/* ── Persoonlijke begeleiding — foto 5 ──────────────────────────────── */}
-      <section className="home-section py-20 md:py-28 bg-botanical-card">
+      {/* ── Persoonlijke begeleiding — foto 5 ─────────────────────────────── */}
+      <section className="services-section py-20 md:py-28 bg-botanical-card">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
-
-            <div className="fade-up overflow-hidden rounded-[40px] shadow-botanical-lg group">
-              <img
-                src={PersoonlijkPhoto}
-                alt=""
-                className="w-full aspect-[4/5] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-              />
-            </div>
-
             <div className="space-y-5 fade-up">
+              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold">Persoonlijk</p>
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-botanical-fg leading-tight">
-                Persoonlijke begeleiding die bij <em className="italic">jou</em> begint
+                Begeleiding die bij <em className="italic">jou</em> begint
               </h2>
               <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
-                Iedereen reageert anders op spanning. Daarom kijken we niet alleen naar je klachten,
-                maar naar jou.
+                Iedereen reageert anders op spanning. Daarom kijken we niet alleen naar je
+                klachten, maar naar jou.
               </p>
               <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
-                Wat speelt er? Welke patronen herken je? Wat vertelt je lichaam? Wat heb jij nodig?
+                Wat speelt er? Welke patronen herken je? Wat vertelt je lichaam? Wat heb jij
+                nodig?
               </p>
               <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
                 Ik stuur op het proces, maar niet op de inhoud. Door vragen te stellen, te laten
-                ervaren en soms juist even ruimte te geven, help ik je ontdekken wat voor jou werkt.
+                ervaren en soms juist even ruimte te geven, help ik je ontdekken wat voor jou
+                werkt.
               </p>
               <blockquote className="botanical-pullquote">
                 "Niet alleen begrijpen wat er gebeurt, maar ervaren wat voor jou werkt."
               </blockquote>
+              <div className="pt-2">
+                <Link to="/mijn-aanbod" className="button-nav">Bekijk mijn aanbod</Link>
+              </div>
             </div>
-
+            <div className="fade-up overflow-hidden rounded-[40px] shadow-botanical-lg group">
+              <img src={PersoonlijkPhoto} alt="" className="w-full aspect-[4/5] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Wil jij weer ruimte ervaren? ───────────────────────────────────── */}
-      <section className="home-section py-20 md:py-28 bg-botanical-fg">
+      {/* ── Decorative divider ───────────────────────────────────────────── */}
+      <div className="flex items-center justify-center py-4 bg-botanical-bg">
+        <div className="w-px h-12 bg-botanical-terra" />
+      </div>
+
+      {/* ── Testimonials marquee ─────────────────────────────────────────── */}
+      <section className="testimonials-section py-20 md:py-28 bg-botanical-bg overflow-hidden">
+        <style>{`
+          @keyframes marquee {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+          }
+          @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.96) translateY(8px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+          }
+          @keyframes modalOut {
+            from { opacity: 1; transform: scale(1) translateY(0); }
+            to   { opacity: 0; transform: scale(0.96) translateY(8px); }
+          }
+          @keyframes modalOverlayIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+          }
+          @keyframes modalOverlayOut {
+            from { opacity: 1; }
+            to   { opacity: 0; }
+          }
+        `}</style>
+
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-12 fade-up">
+            <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-4">Ervaringen</p>
+            <h2 className="font-serif text-3xl md:text-5xl font-bold text-botanical-fg">
+              Wat anderen <em className="italic">zeggen</em>
+            </h2>
+          </div>
+        </div>
+
+        {/* Marquee track — full width, edge-to-edge */}
+        <div className="relative">
+          {/* Fade masks */}
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-botanical-bg to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-botanical-bg to-transparent" />
+
+          <div
+            className="flex gap-6 w-max"
+            style={{ animation: `marquee 60s linear infinite`, animationPlayState: marquePaused ? 'paused' : 'running' }}
+            onMouseEnter={() => setMarquePaused(true)}
+            onMouseLeave={() => setMarquePaused(false)}
+          >
+            {[...testimonials, ...testimonials].map((t, i) => (
+              <div
+                key={i}
+                onClick={t.quote.length > 120 ? () => setModal(t) : undefined}
+                className={`group w-80 min-h-[300px] bg-white rounded-3xl p-7 shadow-botanical-md flex flex-col shrink-0 ${t.quote.length > 120 ? 'cursor-pointer hover:shadow-botanical-lg transition-shadow duration-300' : ''}`}
+              >
+                <div className="font-serif text-5xl text-botanical-clay/50 leading-none mb-3 select-none">"</div>
+                <p className="font-sans text-base text-botanical-fg/85 leading-relaxed flex-1 mb-4 line-clamp-5">
+                  {t.quote}
+                </p>
+                <div className="mt-auto">
+                  {t.quote.length > 120 && (
+                    <button
+                      onClick={() => setModal(t)}
+                      className="font-sans text-sm text-botanical-sage group-hover:text-botanical-sage transition-colors duration-200 mb-2 block py-3 -my-2"
+                    >
+                      Lees meer →
+                    </button>
+                  )}
+                  <div className="flex items-center justify-between">
+                    <p className="font-sans text-sm font-semibold text-botanical-fg">{t.name}</p>
+                    <span className="font-sans text-xs text-botanical-sage bg-botanical-card px-2.5 py-1 rounded-full">{t.service}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Testimonial modal (portal → bypasses page-transition transform) ── */}
+      {modal && createPortal(
+        <div
+          className="fixed inset-0 z-[60] bg-botanical-fg/40 backdrop-blur-sm flex items-center justify-center p-6"
+          style={{ animation: modalClosing ? 'modalOverlayOut 0.3s ease both' : 'modalOverlayIn 0.3s ease both' }}
+          onClick={closeModal}
+        >
+          <div
+            className="bg-white rounded-3xl max-w-xl w-full p-8 md:p-10 shadow-botanical-xl relative"
+            style={{ animation: modalClosing ? 'modalOut 0.3s cubic-bezier(0.4,0,1,1) both' : 'modalIn 0.35s cubic-bezier(0.16,1,0.3,1) both' }}
+            onClick={e => e.stopPropagation()}
+          >
+            <button
+              onClick={closeModal}
+              aria-label="Sluiten"
+              className="absolute top-5 right-5 text-botanical-fg/30 hover:text-botanical-fg/70 transition-colors duration-200"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+            <div className="font-serif text-5xl text-botanical-clay/50 leading-none mb-4 select-none">"</div>
+            <p className="font-sans text-base md:text-lg text-botanical-fg/85 leading-relaxed mb-8">{modal.quote}</p>
+            <div className="flex items-center justify-between">
+              <p className="font-sans text-sm font-semibold text-botanical-fg">{modal.name}</p>
+              <span className="font-sans text-xs text-botanical-sage bg-botanical-card px-3 py-1 rounded-full">{modal.service}</span>
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
+
+      {/* ── Final CTA strip ──────────────────────────────────────────────── */}
+      <section className="py-20 md:py-28 bg-botanical-fg">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="font-serif text-3xl md:text-5xl font-bold text-white leading-tight mb-8 fade-up">
+          <p className="font-sans text-xs tracking-widest uppercase text-botanical-clay/70 mb-5">Begin vandaag</p>
+          <h2 className="font-serif text-3xl md:text-5xl font-bold text-white leading-tight mb-8">
             Wil jij weer <em className="italic text-botanical-clay">ruimte</em> ervaren?
           </h2>
-          <div className="space-y-5 mb-10 fade-up">
-            <p className="font-sans text-lg text-white/75">
-              Je hoeft niet te wachten tot het echt niet meer gaat.
-            </p>
-            <p className="font-sans text-lg text-white/75">
-              In een vrijblijvend kennismakingsgesprek bespreken we waar je tegenaan loopt, wat je
-              graag anders zou willen en of mijn manier van werken bij je past.
-            </p>
-          </div>
-          <div className="fade-up">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center bg-white text-botanical-sage rounded-full px-8 py-4 font-sans text-sm tracking-widest uppercase font-bold hover:bg-botanical-clay hover:text-botanical-fg transition-all duration-300 shadow-botanical-xl"
-            >
-              Plan een vrijblijvend kennismakingsgesprek
-            </Link>
-          </div>
-          <div className="mt-12 fade-up">
+          <p className="font-sans text-lg text-white/65 mb-10">
+            Je hoeft niet te wachten tot het echt niet meer gaat. In een vrijblijvend
+            kennismakingsgesprek bespreken we waar je tegenaan loopt, wat je graag anders zou
+            willen en of mijn manier van werken bij je past.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center justify-center bg-botanical-sage text-white rounded-full px-8 py-4 font-sans text-sm tracking-widest uppercase font-semibold hover:bg-white hover:text-botanical-fg transition-all duration-300 shadow-botanical-xl"
+          >
+            Plan een vrijblijvend kennismakingsgesprek
+          </Link>
+          <div className="mt-12">
             <p className="font-serif text-xl text-white">Yvette van Zadel</p>
             <p className="font-sans text-sm text-white/70 mt-1">
               Ademcoach | Stress- &amp; burn-outcoach | HeartMath coach
