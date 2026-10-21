@@ -8,9 +8,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Images
 import Banner from '../assets/images/homepage/banner.jpg';
-import PersoonlijkPhoto from '../assets/images/homepage/Foto1.jpg';       // 5. Persoonlijke begeleiding
-import UitvallenPhoto from '../assets/images/Stressmanagement/Foto2.jpg';  // 2. Je hoeft niet eerst uit te vallen
-import AanpakPhoto from '../assets/images/Adem/Foto1.jpg';                 // 4. Van spanning naar veerkracht
+import UitvallenPhoto from '../assets/images/homepage/YVZ-230518-249.jpg';   // 2. Je hoeft niet eerst uit te vallen
+import AanpakPhoto from '../assets/images/homepage/YVZ-230613-040.jpg';      // 3. Van Spanning naar Veerkracht
+import PersoonlijkPhoto from '../assets/images/homepage/YVZ-230518-187.jpg'; // 4. Persoonlijke begeleiding
 
 // ─── Data ──────────────────────────────────────────────────────────────────
 
@@ -144,10 +144,10 @@ export default function Home() {
                 Stresscoach | Ademcoach | HeartMath coach
               </span>
               <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-botanical-fg mb-6">
-                Van spanning naar{' '}
-                <em className="italic text-botanical-sage">veerkracht</em>
+                van Spanning naar{' '}
+                <em className="italic text-botanical-sage">Veerkracht</em>
               </h1>
-              <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed mb-10 max-w-lg">
+              <p className="font-sans text-lg md:text-xl font-bold text-botanical-terra leading-relaxed mb-10 max-w-lg">
                 Meer rust in je hoofd. Meer energie. Meer regie over je leven.
               </p>
               <div className="flex flex-wrap gap-4 items-center">
@@ -156,7 +156,7 @@ export default function Home() {
                 </Link>
                 <Link
                   to="/over-mij"
-                  className="font-sans text-sm tracking-wide text-botanical-fg/60 hover:text-botanical-sage transition-colors duration-300 underline underline-offset-4"
+                  className="font-sans text-base font-semibold tracking-wide text-botanical-sage hover:text-botanical-terra transition-colors duration-300 underline underline-offset-4"
                 >
                   Over Yvette →
                 </Link>
@@ -189,11 +189,8 @@ export default function Home() {
       {/* ── Intro Text ───────────────────────────────────────────────────── */}
       <section className="intro-section py-20 md:py-28 bg-botanical-bg">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <div className="fade-up">
-            <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-6">Je hoeft niet eerst uit te vallen</p>
-          </div>
           <div className="space-y-5 fade-up">
-            <p className="font-serif text-2xl md:text-3xl text-botanical-fg leading-relaxed">
+            <p className="font-serif text-2xl md:text-3xl font-bold text-botanical-fg leading-relaxed">
               Je hoofd staat niet stil.
             </p>
             <p className="font-sans text-lg text-botanical-fg/70 leading-relaxed">
@@ -207,26 +204,27 @@ export default function Home() {
               Je bent sneller gespannen of overprikkeld, slaapt minder goed, hebt minder energie
               of merkt dat je niet meer kunt ontspannen zoals je gewend was.
             </p>
+            <p className="font-serif text-2xl md:text-3xl font-bold text-botanical-fg leading-relaxed pt-4">
+              Aan de buitenkant gaat het misschien nog prima.
+              <em className="italic text-botanical-terra"> Van binnen voelt het steeds zwaarder.</em>
+            </p>
           </div>
 
-          <div className="mt-12 fade-up">
+          <div className="mt-16 fade-up">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-botanical-fg leading-tight mb-8">
+              Je hoeft niet eerst <em className="italic">uit te vallen</em>
+            </h2>
             <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-6">Misschien herken je jezelf hierin</p>
             <ul className="grid sm:grid-cols-2 gap-x-10 gap-y-3 text-left max-w-2xl mx-auto">
               {signals.map((signal) => (
                 <li key={signal} className="flex items-start gap-3">
-                  <span className="mt-3 h-0.5 w-4 bg-botanical-terra shrink-0" />
+                  <span className="mt-[0.6rem] h-1.5 w-1.5 rounded-full bg-botanical-terra shrink-0" />
                   <span className="font-sans text-base text-botanical-fg/70 leading-relaxed">{signal}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="mt-12 space-y-5 fade-up">
-            <p className="font-serif text-2xl md:text-3xl text-botanical-fg leading-relaxed">
-              Aan de buitenkant gaat het misschien nog prima.
-              <em className="italic text-botanical-sage"> Vanbinnen voelt het steeds zwaarder.</em>
-            </p>
-          </div>
           <div className="mt-8 fade-up">
             <div className="w-16 h-px bg-botanical-terra mx-auto" />
           </div>
@@ -242,21 +240,17 @@ export default function Home() {
               <img
                 src={UitvallenPhoto}
                 alt=""
-                className="w-full aspect-[4/5] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                className="w-full aspect-[4/3] object-cover object-[35%_center] group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             </div>
 
             <div className="fade-up space-y-5">
-              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold">Herkenbaar?</p>
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-botanical-fg leading-tight">
-                Je hoeft niet eerst <em className="italic">uit te vallen</em>
-              </h2>
               <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">Misschien denk je:</p>
-              <blockquote className="botanical-pullquote">
+              <blockquote className="botanical-pullquote font-bold">
                 "Waarom lukt het me allemaal niet meer zoals vroeger?"
               </blockquote>
               <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">Of:</p>
-              <blockquote className="botanical-pullquote">
+              <blockquote className="botanical-pullquote font-bold">
                 "Ik moet me gewoon wat beter organiseren en nog even volhouden."
               </blockquote>
               <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
@@ -275,34 +269,38 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="fade-up overflow-hidden rounded-[40px] shadow-botanical-lg group order-2">
-              <img src={AanpakPhoto} alt="" className="w-full aspect-[4/5] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
+              <img src={AanpakPhoto} alt="" className="w-full aspect-square object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
             </div>
             <div className="space-y-5 fade-up order-1">
-              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold">De aanpak</p>
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-botanical-fg leading-tight">
-                Van spanning naar <em className="italic">veerkracht</em>
+                van Spanning naar <em className="italic">Veerkracht</em>
               </h2>
               <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
-                In mijn coaching leer je niet alleen begrijpen wat er met je gebeurt. Je leert
-                vooral ervaren hoe je zelf invloed kunt krijgen op spanning, emoties en je
+                In mijn coaching leer je niet alleen begrijpen wat er met je gebeurt.
+              </p>
+              <p className="font-sans text-lg font-bold text-botanical-fg leading-relaxed">
+                Je leert vooral ervaren hoe je zelf invloed kunt krijgen op spanning, emoties en je
                 reacties daarop.
               </p>
               <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
                 We brengen je aandacht uit je hoofd en terug naar je lichaam. Met gesprekken,
                 ademhaling, lichaamsgerichte oefeningen en HeartMath met HRV-biofeedback ontdek je
-                wat voor jou werkt. Zo ontstaat ruimte voor:
+                wat voor jou werkt.
+              </p>
+              <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
+                Zo ontstaat ruimte voor:
               </p>
               <ul className="space-y-3">
                 {ruimteVoor.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="mt-3 h-0.5 w-4 bg-botanical-terra shrink-0" />
-                    <span className="font-sans text-base text-botanical-fg/75 leading-relaxed">{item}</span>
+                    <span className="mt-[0.6rem] h-1.5 w-1.5 rounded-full bg-botanical-terra shrink-0" />
+                    <span className="font-sans text-base font-bold text-botanical-fg leading-relaxed">{item}</span>
                   </li>
                 ))}
               </ul>
               <blockquote className="botanical-pullquote">
-                "Het doel is niet dat je nooit meer spanning ervaart. Het doel is dat je weet wat
-                je kunt doen wanneer spanning er wél is."
+                "Het doel is niet dat je nooit meer spanning ervaart.
+                <strong className="block mt-2">Het doel is dat je weet wat je kunt doen wanneer spanning er wél is."</strong>
               </blockquote>
             </div>
           </div>
@@ -314,9 +312,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="space-y-5 fade-up order-1 md:order-2">
-              <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold">Persoonlijk</p>
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-botanical-fg leading-tight">
-                Begeleiding die bij <em className="italic">jou</em> begint
+                Persoonlijke begeleiding die bij <em className="italic">jou</em> begint
               </h2>
               <p className="font-sans text-lg text-botanical-fg/75 leading-relaxed">
                 Iedereen reageert anders op spanning. Daarom kijken we niet alleen naar je
@@ -339,7 +336,7 @@ export default function Home() {
               </div>
             </div>
             <div className="fade-up overflow-hidden rounded-[40px] shadow-botanical-lg group order-2 md:order-1">
-              <img src={PersoonlijkPhoto} alt="" className="w-full aspect-[4/5] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" />
+              <img src={PersoonlijkPhoto} alt="" className="w-full aspect-[4/3] object-cover object-[40%_center] group-hover:scale-105 transition-transform duration-700 ease-out" />
             </div>
           </div>
         </div>
@@ -377,7 +374,7 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12 fade-up">
-            <p className="font-sans text-xs tracking-widest uppercase text-botanical-terra font-bold mb-4">Ervaringen</p>
+            <p className="font-sans text-base md:text-lg tracking-widest uppercase text-botanical-terra font-bold mb-4">Ervaringen</p>
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-botanical-fg">
               Wat anderen <em className="italic">zeggen</em>
             </h2>
@@ -459,26 +456,28 @@ export default function Home() {
       )}
 
       {/* ── Final CTA strip ──────────────────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-botanical-fg">
+      <section className="py-20 md:py-28 bg-botanical-card">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <p className="font-sans text-xs tracking-widest uppercase text-botanical-clay/70 mb-5">Begin vandaag</p>
-          <h2 className="font-serif text-3xl md:text-5xl font-bold text-white leading-tight mb-8">
-            Wil jij weer <em className="italic text-botanical-clay">ruimte</em> ervaren?
+          <h2 className="font-serif text-3xl md:text-5xl font-bold text-botanical-fg leading-tight mb-8">
+            Wil jij weer <em className="italic text-botanical-terra">ruimte</em> ervaren?
           </h2>
-          <p className="font-sans text-lg text-white/65 mb-10">
-            Je hoeft niet te wachten tot het echt niet meer gaat. In een vrijblijvend
-            kennismakingsgesprek bespreken we waar je tegenaan loopt, wat je graag anders zou
-            willen en of mijn manier van werken bij je past.
-          </p>
+          <div className="font-sans text-lg text-botanical-fg/80 leading-relaxed space-y-5 mb-10">
+            <p>Je hoeft niet te wachten tot het echt niet meer gaat.</p>
+            <p>
+              In een <strong className="text-botanical-fg">vrijblijvend kennismakingsgesprek</strong> bespreken
+              we waar je tegenaan loopt, wat je graag anders zou willen en of mijn manier van
+              werken bij je past.
+            </p>
+          </div>
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center bg-botanical-sage text-white rounded-full px-8 py-4 font-sans text-sm tracking-widest uppercase font-semibold hover:bg-white hover:text-botanical-fg transition-all duration-300 shadow-botanical-xl"
+            className="inline-flex items-center justify-center bg-botanical-sage text-white rounded-full px-8 py-4 font-sans text-sm tracking-widest uppercase font-bold hover:bg-botanical-fg transition-all duration-300 shadow-botanical-xl"
           >
             Plan een vrijblijvend kennismakingsgesprek
           </Link>
           <div className="mt-12">
-            <p className="font-serif text-xl text-white">Yvette van Zadel</p>
-            <p className="font-sans text-sm text-white/70 mt-1">
+            <p className="font-serif text-xl font-bold text-botanical-fg">Yvette van Zadel</p>
+            <p className="font-sans text-sm text-botanical-fg/70 mt-1">
               Ademcoach | Stress- &amp; burn-outcoach | HeartMath coach
             </p>
           </div>
